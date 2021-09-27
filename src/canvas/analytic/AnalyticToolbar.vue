@@ -1396,9 +1396,9 @@ export default {
 			onExit(){
 				this.logger.log(0,"onExit", "entry", this.isPublic);
 				if(this.isPublic){
-					hash("#/examples/"+ this.model.id + "/heat.html");
+					hash("/examples/"+ this.model.id + "/heat.html");
 				} else {
-					hash("#/apps/"+ this.model.id + "/heat.html");
+					hash("/apps/"+ this.model.id + "/heat.html");
 				}
 			},
 
@@ -1702,7 +1702,7 @@ export default {
 						error:"The password should have at least six characters."
 					},
 					{
-						label: 'I have read the <a href="#/termsofservice.html" target="_blank">terms of service</a>',
+						label: 'I have read the <a href="/termsofservice.html" target="_blank">terms of service</a>',
 						name:"tos",
 						type:"check",
 						required:"true",

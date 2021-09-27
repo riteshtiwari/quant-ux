@@ -55,9 +55,9 @@ export default {
 
     setMethod: function(phone, screen) {
       if (this.pub) {
-        phone.href = "#/examples/" + this.model.id + "/design/" + screen.id + ".html";
+        phone.href = "/examples/" + this.model.id + "/design/" + screen.id + ".html";
       } else {
-        phone.href = "#/apps/" + this.model.id + "/design/" + screen.id + ".html";
+        phone.href = "/apps/" + this.model.id + "/design/" + screen.id + ".html";
       }
     },
 
@@ -90,7 +90,7 @@ export default {
       css.add(p, "MatcHint MatcCenter MatcListItemDescription");
 
       p.innerHTML = "Click here to edit the prototype ";
-      phone.href = "#/apps/" + this.model.id + "/design.html";
+      phone.href = "/apps/" + this.model.id + "/design.html";
 
       item.appendChild(p);
     },

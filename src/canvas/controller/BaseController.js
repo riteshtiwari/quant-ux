@@ -642,7 +642,7 @@ export default class BaseController extends Core {
 		delete oldModel.id;
 		delete oldModel._id;
 		var app = await this.modelService.createApp(oldModel)
-		hash("#/apps/" + app.id + ".html");
+		hash("/apps/" + app.id + ".html");
 		this.logger.log(0, "onSaveAsAfterSignUp", "New app" + app.id);
 	}
 

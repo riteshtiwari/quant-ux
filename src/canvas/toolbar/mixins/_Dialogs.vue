@@ -343,7 +343,7 @@ export default {
 				css: "input-lg MatcIgnoreOnKeyPress",
 				error: this.getNLS("dialog.login.password.error")
 			}, {
-				label: this.getNLS("dialog.login.tos.1") + ' <a href="#/termsofservice.html" target="_blank">' + this.getNLS("dialog.login.tos.2") + '</a>' + this.getNLS("dialog.login.tos.3"),
+				label: this.getNLS("dialog.login.tos.1") + ' <a href="/termsofservice.html" target="_blank">' + this.getNLS("dialog.login.tos.2") + '</a>' + this.getNLS("dialog.login.tos.3"),
 				name: "tos",
 				type: "check",
 				required: "true",
@@ -759,7 +759,7 @@ export default {
 			var app = await this.controller.onSaveAs(this.model, inputName.value);
 			if (app){
 				this.redirectAfterExit = false;
-				hash("#/apps/" +app.id +".html");
+				hash("/apps/" +app.id +".html");
 			}
 		},
 

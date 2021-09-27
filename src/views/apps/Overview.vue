@@ -20,19 +20,29 @@
             <div class="level-item tabs">
               <ul>
                 <li :class="[{'is-active': tab == 'design'}]">
-                  <a :href="`#/${urlPrefix}/${appID}/design.html`">{{ $t('app.overview.design')}}</a>
+                  <router-link :to="`/${urlPrefix}/${appID}/design.html`">
+                    {{ $t('app.overview.design')}}
+                  </router-link>
                 </li>
                 <li :class="[{'is-active': tab == 'test' || tab === 'video'}]">
-                  <a :href="`#/${urlPrefix}/${appID}/test.html`">{{ $t('app.overview.test')}}</a>
+                  <router-link :to="`/${urlPrefix}/${appID}/test.html`">
+                    {{ $t('app.overview.test')}}
+                  </router-link>
                 </li>
                 <li :class="[{'is-active': tab == 'analyze'}]">
-                  <a :href="`#/${urlPrefix}/${appID}/analyze.html`">{{ $t('app.overview.dash')}}</a>
+                  <router-link :to="`/${urlPrefix}/${appID}/analyze.html`">
+                    {{ $t('app.overview.dash')}}
+                  </router-link>
                 </li>
                 <li :class="[{'is-active': tab == 'heat'}]">
-                  <a :href="`#/${urlPrefix}/${appID}/heat.html`">{{ $t('app.overview.heat')}}</a>
+                  <router-link :to="`/${urlPrefix}/${appID}/heat.html`">
+                    {{ $t('app.overview.heat')}}
+                  </router-link >
                 </li>
                 <li :class="[{'is-active': tab == 'settings'}]">
-                  <a :href="`#/${urlPrefix}/${appID}/settings.html`" v-if="!isPublic">{{ $t('app.overview.settings')}}</a>
+                  <router-link :to="`/${urlPrefix}/${appID}/settings.html`" v-if="!isPublic">
+                    {{ $t('app.overview.settings')}}
+                  </router-link >
                 </li>
               </ul>
             </div>
@@ -42,7 +52,7 @@
               <a
                 class="button is-primary"
                 target="test"
-                :href="'#/test.html?h=' + hash + '&log=' + !isPublic"
+                :href="'/test.html?h=' + hash + '&log=' + !isPublic"
                 id="overviewHeaderRunTest">{{ $t('app.overview.run-test')}}</a>
             </div>
             <div class="level-item">

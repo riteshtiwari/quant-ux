@@ -135,7 +135,7 @@ export default {
               this.sessionID
             )
           ]).then(() => {
-            hash("#/apps/" + this.appID + "/test.html");
+            hash("/apps/" + this.appID + "/test.html");
           });
         }
       }

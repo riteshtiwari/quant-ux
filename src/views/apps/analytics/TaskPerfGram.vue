@@ -493,9 +493,9 @@ export default {
 			this._selectedScatterPoint = p;
 
 			if (this.model){
-				var url = "#/apps/" + this.model.id + "/replay/" + s.session + ".html";
+				var url = "/apps/" + this.model.id + "/replay/" + s.session + ".html";
 				if (this.mode == "public"){
-					url = "#/examples/" + this.model.id + "/replay/" + s.session + ".html";
+					url = "/examples/" + this.model.id + "/replay/" + s.session + ".html";
 				}
 				var hint = this.db.span("MatcHint", this.getNLS("dash.perf.hint.session-msg")).build();
 				var a = this.db.a("", this.getNLS("dash.perf.hint.session-play")).build(hint);

@@ -1,6 +1,6 @@
 <template>
-  <div class="MatcToolbarCollabUser">
-    <div v-for="user in visibleUsers" :key="user.id" class="MatcTeamItem vommondToolTipCntr" @click="onClickUser(user)">
+  <div class="MatcToolbarCollabUser" v-if="visibleUsers.length > 1">
+    <div v-for="user in visibleUsers" :key="user.id" class="MatcTeamItem vommondToolTipCntr" @click="onClickUser(user)" >
       
       <div :class="['MatcUserImageCntr ', {'MatcUserImageCntrTrans': user.image}]">
         <div v-if="user.image">

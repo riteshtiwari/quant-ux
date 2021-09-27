@@ -25,7 +25,7 @@ class UserService extends AbstractService{
     }
 
     async login (data) {
-        let user = await this._post('rest/login/', data)
+        let user = await this._post('/rest/login/', data)
         if (!user.errors) {
             this.setUser(user)
         }
@@ -33,12 +33,12 @@ class UserService extends AbstractService{
     }
 
     save (userID, data) {
-        return this._post('rest/user/' + userID + ".json", data)
+        return this._post('/rest/user/' + userID + ".json", data)
     }
 
     logout () {
         localStorage.removeItem('quxUser');
-        return this._delete('rest/login/')
+        return this._delete('/rest/login/')
     }
 
     reset (email) {
@@ -134,7 +134,7 @@ class UserService extends AbstractService{
             } else {
                 this.logger.error('isValidUser', 'Error > Token has timed out')
                 this.logout()
-                location.href= "#/"
+                location.href= "/"
             }
         }
         return false

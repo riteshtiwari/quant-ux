@@ -243,7 +243,7 @@ export default {
             node.appendChild(group);
 
             let play = document.createElement("a");
-            play.href = "#/" +  urlPrefix + "/" +  app.id + "/replay/" + row.session + ".html";
+            play.href = "/" +  urlPrefix + "/" +  app.id + "/replay/" + row.session + ".html";
             css.add(play, "button is-primary");
             play.innerHTML = '<span class="mdi mdi-play"></span>';
             group.appendChild(play);

@@ -360,14 +360,14 @@ export default {
 			this.logger.log(-1,"onExit", "entry > " + this.pub);
 			this.active = false;
 			if(this.pub){
-				if(this.model.id){
-					hash("#/examples/"+ this.model.id + ".html");
+				if (this.model.id){
+					hash("/examples/"+ this.model.id + ".html");
 				} else {
-					hash("#/");
+					hash("/");
 				}
 			} else {
 				if (this.redirectAfterExit){
-					hash("#/apps/"+ this.model.id + ".html");
+					hash("/apps/"+ this.model.id + ".html");
 				} else {
 					this.logger.log(-1,"onExit", "exit >> Do not redictect!");
 				}

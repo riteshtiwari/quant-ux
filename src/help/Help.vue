@@ -24,11 +24,11 @@
                     </div>
                     <div v-else>
                         <template v-for="topic in topics">
-                            <a :class="[{'selected': topic.id === selected && !selectedParagraph}, topic.css]" :key="topic.id" :href="'#/help/' + topic.id + '.html'">
+                            <a :class="[{'selected': topic.id === selected && !selectedParagraph}, topic.css]" :key="topic.id" :href="'/help/' + topic.id + '.html'">
                                 {{topic.name}}
                             </a>
                             <template v-if="topic.id === selected">
-                                <a  v-for="(p, i) in topic.paragraphs" :key="i" :class="['MatcHelpSubTopic', {'selected': p.id === selectedParagraph}]" :href="'#/help/' + topic.id + '/' + p.id +'.html'" >
+                                <a  v-for="(p, i) in topic.paragraphs" :key="i" :class="['MatcHelpSubTopic', {'selected': p.id === selectedParagraph}]" :href="'/help/' + topic.id + '/' + p.id +'.html'" >
                                     {{p.title}}
                                 </a>
                             </template>

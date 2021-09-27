@@ -56,9 +56,9 @@ export default {
 
     setMethod(phone) {
       if (this.pub) {
-        phone.href = "#/examples/" + this.model.id + "/analyze/workspace.html";
+        phone.href = "/examples/" + this.model.id + "/analyze/workspace.html";
       } else {
-        phone.href = "#/apps/" + this.model.id + "/analyze/workspace.html";
+        phone.href = "/apps/" + this.model.id + "/analyze/workspace.html";
       }
     },
 

@@ -25,7 +25,7 @@ export default {
     }
     let hash = temp[1]
     this.logger.info("mounted", "exit > " + hash);
-    location.href = `#/simulate.html?qr=true&h=${hash}` 
+    location.href = `/simulate.html?qr=true&h=${hash}` 
   }
 };
 </script>

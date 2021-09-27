@@ -94,14 +94,14 @@ export default {
       return this.invitation;
     },
     testLink() {
-      let testURL = this.base + "/#/test.html?h=" + this.passwortedHash;
+      let testURL = this.base + "//test.html?h=" + this.passwortedHash;
       if (this.isPublic) {
         testURL += "&log=false";
       }
       return testURL;
     },
     shareLink() {
-      let testURL = this.base + "/#/share.html?h=" + this.hash;
+      let testURL = this.base + "//share.html?h=" + this.hash;
       if (this.isPublic) {
         testURL += "&log=false";
       }

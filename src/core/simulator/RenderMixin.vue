@@ -74,7 +74,7 @@ export default {
 					this.setScreenBackground(screen);
 
 					if(this.qr){
-						hash(`#/simulate.html?qr=${this.qr}&h=${this.hash}&s=${screen.id}&log=${this.logData}&live=${this.live}`);
+						hash(`/simulate.html?qr=${this.qr}&h=${this.hash}&s=${screen.id}&log=${this.logData}&live=${this.live}`);
 					}
 
 					if(oldScreen){

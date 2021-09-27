@@ -25,6 +25,7 @@ matcRoutes.push({path:'apps/:id/replay/:session.html', component: () => import(/
 
 
 export default new VueRouter({
+  mode: 'history',
   routes: [
     {
       path: '/simulate.html',

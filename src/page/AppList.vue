@@ -277,10 +277,10 @@ export default {
 
       if (this.pub) {
         p.innerHTML = this.getNLS("applist.sign-in");
-        phone.href = "#/signup-and-create-app.html";
+        phone.href = "/signup-and-create-app.html";
       } else {
         p.innerHTML = this.getNLS("applist.add");
-        phone.href = "#/create-app.html";
+        phone.href = "/create-app.html";
       }
 
       item.appendChild(p);
@@ -387,12 +387,12 @@ export default {
     setMethod: function(phone, app) {
       if (!this.pub) {
         if (this.isMobile) {
-          phone.href = "#/test/mobile/" + app.id + ".html";
+          phone.href = "/test/mobile/" + app.id + ".html";
         } else {
-          phone.href = "#/apps/" + app.id + ".html";
+          phone.href = "/apps/" + app.id + ".html";
         }
       } else {
-        phone.href = "#/examples/" + app.id + ".html";
+        phone.href = "/examples/" + app.id + ".html";
       }
     },
 

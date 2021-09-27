@@ -7,7 +7,7 @@
           <div class="level-right">
             <a
               class="button is-success level-item"
-              :href="`#/${urlPrefix}/${app.id}/analyze/workspace.html`"
+              :href="`/${urlPrefix}/${app.id}/analyze/workspace.html`"
             >Open Analytic Canvas</a>
           </div>
         </div>

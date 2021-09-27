@@ -40,12 +40,12 @@
 
           <div class="field">
             <label>Test</label>
-            <input type="text" class="input" :value="`${base}/#/test.html?h=${hashes[1]}`" />
+            <input type="text" class="input" :value="`${base}//test.html?h=${hashes[1]}`" />
           </div>
 
           <div class="field">
             <label>Share and Comment</label>
-            <input type="text" class="input" :value="`${base}/#/share.html?h=${hashes[1]}`" />
+            <input type="text" class="input" :value="`${base}//share.html?h=${hashes[1]}`" />
           </div>
 
           <div class="field">
@@ -152,7 +152,7 @@ export default {
     async deleteApp (d) {
       await Services.getModelService().deleteApp(this.app);
       d.close()
-      location.href = "#/my-apps.html";
+      location.href = "/my-apps.html";
     },
     async resetShare() {
       await Services.getModelService().resetTeam(this.app.id);

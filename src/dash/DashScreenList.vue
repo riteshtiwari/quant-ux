@@ -167,9 +167,9 @@ export default {
 						css.add(play, " MatcButton ");
 						play.innerHTML= me.getNLS("dashScreenList.table-action");
 						if(me.mode == "public"){
-							play.href= "#/examples/" +appID + "/analytics/workspace/" +screen.id+ ".html";
+							play.href= "/examples/" +appID + "/analytics/workspace/" +screen.id+ ".html";
 						} else {
-							play.href= "#/apps/" +appID + "/analytics/workspace/" +screen.id+ ".html";
+							play.href= "/apps/" +appID + "/analytics/workspace/" +screen.id+ ".html";
 						}
 						group.appendChild(play);
 					}
@@ -194,10 +194,10 @@ export default {
 
 		setMethod:function(phone, screen){
 			if(this.mode == "public"){
-				phone.href ="#/examples/" +this.model.id + "/analytics/workspace/" +screen.id + ".html";
+				phone.href ="/examples/" +this.model.id + "/analytics/workspace/" +screen.id + ".html";
 
 			} else {
-				phone.href ="#/apps/" +this.model.id + "/analytics/workspace/" +screen.id+ ".html";
+				phone.href ="/apps/" +this.model.id + "/analytics/workspace/" +screen.id+ ".html";
 
 			}
 		},

@@ -131,7 +131,7 @@ export default {
 			var tdButton = db.tr().td("MatcCenter MatcPricingSeperator").build(body);
 			var a = db.a("MatcButton MatcButtonXXL", "Sign Up").build(tdButton);
 			
-			var url =  "#/register/Free/" + price + ".html";
+			var url =  "/register/Free/" + price + ".html";
 			a.setAttribute("data-binding-method",url);
 			a.setAttribute("href", url);
 

@@ -22,7 +22,7 @@
 
         <div class="buttons mt-16">
           <a class="button is-primary" @click="create">Create</a>
-          <a href="#/my-apps.html" class="button is-text">Cancel</a>
+          <a href="/my-apps.html" class="button is-text">Cancel</a>
         </div>
 
         <p class="has-text-grey is-size-6">* The screen size is measured in points and not pixel!</p>
@@ -57,14 +57,14 @@ export default {
     async create() {
       if (this.$route.meta && this.$route.meta.isTryout) {
         this.logger.info("create", "enter > tryout");
-        location.href = `#/tryout2.html?w=${this.type.screenSize.w}&h=${this.type.screenSize.h}&t=${this.type.type}`;
+        location.href = `/tryout2.html?w=${this.type.screenSize.w}&h=${this.type.screenSize.h}&t=${this.type.type}`;
       } else {
         this.logger.info("create", "enter > user");
         let fac = new ModelFactory();
         let model = fac.createAppModel(this.name, "", this.type);
         let app = await Services.getModelService().createApp(model);
         if (app && app.id) {
-          location.href = "#/apps/" + app.id + "/create.html";
+          location.href = "/apps/" + app.id + "/create.html";
         } else {
           this.showError("Could not create app");
         }

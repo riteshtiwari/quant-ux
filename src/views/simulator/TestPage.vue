@@ -178,7 +178,7 @@ export default {
 					 *
 					 * keep in sync with qr
 					 */
-					var target = "/#/simulate.html?qr=true&h=" + hash;
+					var target = "//simulate.html?qr=true&h=" + hash;
 					if(log == "false"){
 						target+="&log=false";
 					} else {

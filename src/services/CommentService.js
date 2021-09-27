@@ -10,22 +10,22 @@ class CommentService extends AbstractService{
 
     find (appID, type, reference) {
         if (!reference) {
-            return this._get(`rest/comments/apps/${appID}/${type}.json`)
+            return this._get(`/rest/comments/apps/${appID}/${type}.json`)
         } else {
-            return this._get(`rest/comments/apps/${appID}/${reference}/${type}.json`)
+            return this._get(`/rest/comments/apps/${appID}/${reference}/${type}.json`)
         }
     }
 
     delete (appID, comment) {
-        return this._delete(`rest/comments/apps/${appID}/${comment.id}.json`)
+        return this._delete(`/rest/comments/apps/${appID}/${comment.id}.json`)
     }
 
     create (appID, comment){
-        return this._post(`rest/comments/apps/${appID}`, comment)
+        return this._post(`/rest/comments/apps/${appID}`, comment)
     }
 
     update (appID, comment){
-        return this._post(`rest/comments/apps/${appID}/${comment.id}.json`, comment)
+        return this._post(`/rest/comments/apps/${appID}/${comment.id}.json`, comment)
     }
 
 }
