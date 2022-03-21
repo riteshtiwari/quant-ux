@@ -867,7 +867,9 @@ export default {
 
 		_getClipBoard (){
 			this.logger.log(-1,"_setCligBoard", "enter > ");
-			return this.controller.getClipBoard ()
+			if (this.controller) {
+				return this.controller.getClipBoard ()
+			}
 		},
 
 		hasCopy (){

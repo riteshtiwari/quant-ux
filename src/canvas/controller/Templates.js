@@ -181,21 +181,26 @@ export default class Templates extends BaseController{
 	}
 
 	addNestedTemplateGroup (group, name) {
-		// FIXME: Make this work also nested groups...
-		this.addTemplateGroup(group, name)
-	}
-
-	addTemplateGroup (group, name){
-		this.logger.log(-1,"addTemplateGroup", "DEPRECTAED!! enter > " + name);
-		// keep this method, because of legacy commands!
+		this.logger.log(-1,"addNestedTemplateGroup", "enter > " + name);
 
 		var command = {
 			timestamp : new Date().getTime(),
 			type : "CreateTemplate",
 			models : [],
 			widgets : [],
-			groupID : group.id
+			groups:[],
+			groupID : group.id,
+
 		};
+
+		let groupIds = this.getGroupsToTemplate(group)
+		console.debug('asd', groupIds)
+		if (groupIds) {
+			console.debug('addNestedTemplateGroup', groupIds)
+			return
+		}
+
+
 
 		/**
 		 * make one group template!
@@ -207,6 +212,8 @@ export default class Templates extends BaseController{
 		template.visible=true;
 		template.name = name;
 		template.children = [];
+
+		
 		command.group = template;
 
 
@@ -232,15 +239,21 @@ export default class Templates extends BaseController{
 		this.addCommand(command);
 		this.modelAddTemplate(command.models,command.widgets,command.group, command.groupID);
 		this.updateCreateWidget();
+
 	}
 
-	modelAddTemplate (templates, widgetIDs, group, groupID){
+	getGroupsToTemplate(group) {
+		let groups = this.getAllChildGroups(group)
+		return [group.id].concat(groups.map(g => g.id))
+	}
 
-		if(!this.model.templates){
+	modelAddTemplate (templates, widgetIDs, group, groupID, groups = []){
+
+		if (!this.model.templates){
 			this.model.templates = {};
 		}
 
-		for(var i=0; i < templates.length; i++){
+		for (let i=0; i < templates.length; i++) {
 			var t = templates[i];
 			this.model.templates[t.id] = t;
 			// make widget instance of template as well
@@ -272,11 +285,19 @@ export default class Templates extends BaseController{
 			}
 		}
 
-		if(group){ // FIXME should be groups, make backward compatible
+		/**
+		 * Since 4.0.60 we do not use tehse parameters any more. But the might be
+		 * still on old command stacks...
+		 */
+		if (group) {
 			this.model.templates[group.id] = group;
 		}
-		if(groupID){
+		if (groupID) {
 			this.model.groups[groupID].template = group.id;
+		}
+
+		if (groups) {
+			console.debug('add groups')
 		}
 		this.onModelChanged([{type: 'template', action: 'add'}]);
 		this.showSuccess("The Component was created. You can find it in the 'Create' menu");
@@ -284,18 +305,17 @@ export default class Templates extends BaseController{
 
 	undoCreateTemplate (command){
 		this.logger.log(0,"undoCreateTemplate", "enter > ");
-		this.modelRemoveTemplate(command.models, command.widgets, command.group, command.groupID);
+		this.modelRemoveTemplate(command.models, command.widgets, command.group, command.groupID, command.groups);
 		this.updateCreateWidget();
 		this.render();
 	}
 
 	redoCreateTemplate (command){
 		this.logger.log(0,"redoCreateTemplate", "enter > ");
-		this.modelAddTemplate(command.models, command.widgets, command.group, command.groupID);
+		this.modelAddTemplate(command.models, command.widgets, command.group, command.groupID, command.groups);
 		this.updateCreateWidget();
 		this.render();
 	}
-
 
 
 
