@@ -171,6 +171,7 @@ export default class Templates extends BaseController{
 		template.name = name;
 		template.modified = new Date().getTime()
 		template.created = new Date().getTime()
+		template.isRootTemplate = true
 		return template;
 	}
 
@@ -193,59 +194,71 @@ export default class Templates extends BaseController{
 
 		};
 
-		let groupIds = this.getGroupsToTemplate(group)
-		console.debug('asd', groupIds)
-		if (groupIds) {
-			console.debug('addNestedTemplateGroup', groupIds)
-			return
-		}
-
-
+		// we need to get the gloab bounding box
+		const allChildren = this.getAllGroupChildren(group)
+		const boundingBox = this.getBoundingBox(allChildren);
+	
 
 		/**
 		 * make one group template!
 		 */
-		var template = {};
-		template.id = "tg" + this.getUUID();
-		template.type = "Group";
-		template.templateType = "Group";
-		template.visible=true;
-		template.name = name;
-		template.children = [];
-
-		
-		command.group = template;
-
-
-		/**
-		 * make templates for all children
-		 * 
-		 */
-		const allChildren = this.getAllGroupChildren(group)
-		const boundingBox = this.getBoundingBox(allChildren);
-		for(let i=0; i < allChildren.length; i++){
-			let widgetID = allChildren[i];
-			let widget = this.model.widgets[widgetID];
-			let t = this._createWidgetTemplate(widget, false, name+"_"+i, "");
-			// add also relative coords!
-			t.x = widget.x - boundingBox.x;
-			t.y = widget.y - boundingBox.y;
-
-			template.children.push(t.id);
-			command.models.push(t);
-			command.widgets.push(widgetID);
+		 var template = {};
+		 template.id = "tg" + this.getUUID();
+		 template.type = "Group";
+		 template.isRootTemplate = true
+		 template.templateType = "Group";
+		 template.visible=true;
+		 template.name = name;
+		 template.children = [];
+		 template.groups = []
+ 
+		 command.groups.push(template);
+ 
+		 /**
+		  * make templates for all children
+		  */
+		 const children = group.children
+		 for(let i=0; i < children.length; i++){
+			 let widgetID = children[i];
+			 let widget = this.model.widgets[widgetID];
+			 let t = this._createWidgetTemplate(widget, false, name+"_"+i, "");
+			 // add also relative coords!
+			 t.x = widget.x - boundingBox.x;
+			 t.y = widget.y - boundingBox.y;
+ 
+			 template.children.push(t.id);
+			 command.models.push(t);
+			 command.widgets.push(widgetID);
 		}
 
+
+		if (group.groups) {
+			group.groups.forEach(subId => {
+			
+			})
+		}
+	
+
+		if (children) {
+			console.debug(command)
+			return
+		}
+
+		
 		this.addCommand(command);
-		this.modelAddTemplate(command.models,command.widgets,command.group, command.groupID);
+		this.modelAddTemplate(command.models,command.widgets, null, null, command.groups);
 		this.updateCreateWidget();
 
 	}
 
-	getGroupsToTemplate(group) {
-		let groups = this.getAllChildGroups(group)
-		return [group.id].concat(groups.map(g => g.id))
+	_createSubGroupTemplate (command, template) {
+
 	}
+
+	
+
+	
+
 
 	modelAddTemplate (templates, widgetIDs, group, groupID, groups = []){
 
@@ -276,7 +289,6 @@ export default class Templates extends BaseController{
 					widget.active = {}
 				}
 
-				// templates cannot have design tokens?
 				if (widget.designtokens) {
 					delete widget.designtokens
 				}
@@ -328,18 +340,35 @@ export default class Templates extends BaseController{
 	}
 
 
-	modelRemoveTemplate (templates, widgetIDs, group, groupID){
+	modelRemoveTemplate (templates, widgetIDs, group, groupID, groups){
 
 		if(this.model.templates){
-			for(var i=0; i < templates.length; i++){
-				var t = templates[i];
+			for(let i=0; i < templates.length; i++){
+				let t = templates[i];
 				delete this.model.templates[t.id];
 
-				var widgetID = widgetIDs[i];
-				var widget = this.model.widgets[widgetID];
+				let widgetID = widgetIDs[i];
+				let widget = this.model.widgets[widgetID];
 				if (widget){
 					delete widget.template;
+					delete widget.isRootTemplate
 					widget.style = t.style;
+
+					if (t.focus) {
+						widget.focus = t.focus
+					}
+
+					if (t.error) {
+						widget.error = t.error
+					}
+
+					if (t.active) {
+						widget.active = t.active
+					}
+
+					if (t.hover) {
+						widget.hover = t.hover
+					}
 				} else {
 					console.warn("No widget with ", widgetID);
 				}
@@ -360,6 +389,10 @@ export default class Templates extends BaseController{
 
 		if(groupID){
 			delete this.model.groups[groupID].template;
+		}
+
+		if (groups) {
+			//
 		}
 
 
