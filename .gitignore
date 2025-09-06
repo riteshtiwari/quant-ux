@@ -22,3 +22,98 @@ yarn-error.log*
 *.sln
 *.sw?
 ai.js
+
+# Build artifacts
+dist/
+build/
+*.tgz
+*.tar.gz
+
+# Database files and data directories
+docker/data/
+*.db
+*.sqlite
+*.sqlite3
+*.mdb
+*.ldb
+*.log
+
+# MongoDB data files
+*.wt
+*.lock
+*.turtle
+WiredTiger*
+journal/
+diagnostic.data/
+
+# Runtime and cache files
+.cache/
+.tmp/
+.temp/
+*.tmp
+*.temp
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# IDE and editor files
+*.swp
+*.swo
+*~
+.project
+.settings/
+.classpath
+
+# Package manager files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Coverage reports
+coverage/
+*.lcov
+
+# ESLint cache
+.eslintcache
+
+# Optional npm cache directory
+.npm
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# dotenv environment variables file
+.env
+.env.test
+
+# parcel-bundler cache (https://parceljs.org/)
+.parcel-cache
+
+# next.js build output
+.next
+
+# nuxt.js build output
+.nuxt
+
+# vuepress build output
+.vuepress/dist
+
+# Serverless directories
+.serverless
+
+# FuseBox cache
+.fusebox/
+
+# DynamoDB Local files
+.dynamodb/
+
+# TernJS port file
+.tern-port
