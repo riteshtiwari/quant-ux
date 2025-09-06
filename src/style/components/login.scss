@@ -1,104 +1,550 @@
 @import '../variables.scss';
 
+// Modern Apple Liquid Glass Login Styles
 .MatcLoginPage {
-  font-size: 14px;
-  height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  height: 100vh !important;
+  overflow: hidden !important;
+  position: relative !important;
+  background: transparent !important;
 }
 
-.MatcLoginPageReset {
-  background: linear-gradient(30deg, $color_danger 0%, $color_danger_hover 100%);
+// Override any existing background styles
+body.MatcLoginPage,
+html.MatcLoginPage,
+.MatcLoginPage * {
+  background: transparent !important;
 }
 
+// Force the dark background to be visible
+.MatcLoginPage {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a0b2e 25%, #16213e 50%, #0f3460 75%, #0a0a0a 100%) !important;
+}
+
+// Animated Background
+.MatcLoginBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.MatcLoginBackgroundGradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, 
+    #0a0a0a 0%, 
+    #1a0b2e 25%, 
+    #16213e 50%, 
+    #0f3460 75%, 
+    #0a0a0a 100%);
+  animation: gradientShift 8s ease-in-out infinite;
+}
+
+.MatcLoginBackgroundShapes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.MatcLoginShape {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(45deg, 
+    rgba(255, 0, 128, 0.1) 0%, 
+    rgba(139, 92, 246, 0.1) 50%, 
+    rgba(0, 212, 255, 0.1) 100%);
+  filter: blur(40px);
+  animation: float 6s ease-in-out infinite;
+}
+
+.MatcLoginShape1 {
+  width: 300px;
+  height: 300px;
+  top: -150px;
+  right: -150px;
+  animation-delay: 0s;
+}
+
+.MatcLoginShape2 {
+  width: 200px;
+  height: 200px;
+  bottom: -100px;
+  left: -100px;
+  animation-delay: 2s;
+}
+
+.MatcLoginShape3 {
+  width: 150px;
+  height: 150px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation-delay: 4s;
+}
+
+// Main Dialog Container
 .MatcLoginPageDialog {
-	position: fixed;
-  transform: translateY(-50%) translateX(-240px);
-	top:50%;
-	left:50%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  width: 100%;
+  max-width: 420px;
+  padding: 20px;
 }
 
 .MatcLoginPageContainer {
-	width: 480px;
-	text-align: left;
-	background: #fefefe;
-	color: #333;
-	border-radius: 5px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 24px !important;
+  padding: 24px !important;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  width: auto !important;
+  text-align: left !important;
+  color: #ffffff !important;
+}
+
+.MatcLoginPageContainer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255, 255, 255, 0.2) 50%, 
+    transparent 100%);
+}
+
+// Header Section
+.MatcLoginHeader {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.MatcLoginLogo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.MatcLoginLogoIcon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.MatcLoginLogoIcon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.MatcLoginTitle {
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.MatcLoginSubtitle {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+  font-weight: 400;
+}
+
+// Tab Navigation
+.MatcLoginTabs {
+  display: flex;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 4px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.MatcLoginTab {
+  flex: 1;
+  padding: 12px 16px;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.MatcLoginTab:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.MatcLoginTabActive {
+  background: linear-gradient(135deg, 
+    rgba(255, 0, 128, 0.2) 0%, 
+    rgba(139, 92, 246, 0.2) 50%, 
+    rgba(0, 212, 255, 0.2) 100%);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+// Form Styles
+.MatcLoginContent {
+  width: 100%;
+}
+
+.MatcLoginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 280px; // Ensure consistent height for both forms
+}
+
+.MatcFormGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.MatcFormLabel {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+}
+
+.MatcFormInput {
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: #ffffff;
+  font-size: 16px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.MatcFormInput::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.MatcFormInput:focus {
+  border-color: rgba(255, 0, 128, 0.5);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 0 3px rgba(255, 0, 128, 0.1);
+}
+
+.MatcFormInput:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+// Checkbox Styles
+.MatcFormGroupCheckbox {
+  margin-top: 0px; // Remove extra margin to keep forms same height
+}
+
+.MatcCheckboxLabel {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px; // Reduce gap to make checkbox more compact
+  cursor: pointer;
+}
+
+.MatcCheckboxText {
+  font-size: 13px; // Slightly smaller text
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.3; // Tighter line height
+}
+
+.MatcCheckboxLink {
+  color: #00d4ff;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.MatcCheckboxLink:hover {
+  color: #ffffff;
+}
+
+// Custom Checkbox Styling for Glass Design
+.MatcCheckboxLabel .VommondCheckBoxWrapper {
+  margin: 0;
+}
+
+.MatcCheckboxLabel .VommondCheckBox {
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.2s ease;
+  position: relative;
   overflow: hidden;
+}
 
-    .MatcToolbarTabs.MatcToolbarTabsBig{
-        text-align: center;
-        padding: 8px;
-    }
-    
-    .MatcToolbarTabs a {
-        border-bottom-width: 2px;
-        margin: 0px 5px;
-        color: $text_color;
-    }
-    
-    .MatcToolbarTabs a:HOVER {
-        color: $primary_color;
-    }
+.MatcCheckboxLabel .VommondCheckBox:hover {
+  border-color: rgba(255, 0, 128, 0.5);
+  background: rgba(255, 255, 255, 0.08);
+}
 
+.MatcCheckboxLabel .VommondCheckBoxChecked {
+  background: linear-gradient(135deg, 
+    rgba(255, 0, 128, 0.2) 0%, 
+    rgba(139, 92, 246, 0.2) 50%, 
+    rgba(0, 212, 255, 0.2) 100%);
+  border-color: rgba(255, 0, 128, 0.6);
+}
 
-  .MatcLoginPageForm{
+.MatcCheckboxLabel .VommondCheckBoxHook {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  width: 6px;
+  height: 10px;
+  border: solid #ffffff;
+  border-width: 0 2px 2px 0;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
 
-    display: flex;
-    gap: 16px;
-    flex-direction: column;
-    height: 200px;
+.MatcCheckboxLabel .VommondCheckBoxChecked .VommondCheckBoxHook {
+  opacity: 1;
+}
 
-    .form-group {
-      margin-bottom: 0px;
-    }
+// Button Styles
+.MatcLoginButton {
+  position: relative;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, 
+    #ff0080 0%, 
+    #8b5cf6 50%, 
+    #00d4ff 100%);
+  border: none;
+  border-radius: 12px;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  margin-top: 8px;
+  box-shadow: 0 4px 16px rgba(255, 0, 128, 0.3);
+}
 
-    .MatcErrorLabel {
-      margin-bottom: 16px;
-    }
+.MatcLoginButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 0, 128, 0.4);
+}
+
+.MatcLoginButton:active {
+  transform: translateY(0);
+}
+
+.MatcLoginButtonShine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255, 255, 255, 0.3) 50%, 
+    transparent 100%);
+  transition: left 0.6s ease;
+}
+
+.MatcLoginButton:hover .MatcLoginButtonShine {
+  left: 100%;
+}
+
+.MatcLoginButtonDanger {
+  background: linear-gradient(135deg, 
+    #ff4757 0%, 
+    #ff6b7a 100%);
+  box-shadow: 0 4px 16px rgba(255, 71, 87, 0.3);
+}
+
+.MatcLoginButtonDanger:hover {
+  box-shadow: 0 8px 24px rgba(255, 71, 87, 0.4);
+}
+
+// Link Button
+.MatcLoginLink {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.2s ease;
+  margin-top: 8px;
+  align-self: flex-start;
+}
+
+.MatcLoginLink:hover {
+  color: #00d4ff;
+}
+
+// Error Message
+.MatcErrorMessage {
+  color: #ff6b7a;
+  font-size: 14px;
+  text-align: center;
+  padding: 8px 0;
+  min-height: 20px;
+}
+
+// Animations
+@keyframes gradientShift {
+  0%, 100% {
+    background: linear-gradient(135deg, 
+      #0a0a0a 0%, 
+      #1a0b2e 25%, 
+      #16213e 50%, 
+      #0f3460 75%, 
+      #0a0a0a 100%);
   }
-
-  .MatcErrorLabel {
-    height: 32px;
-    padding: 8px 0px;
-    display: block;
+  50% {
+    background: linear-gradient(135deg, 
+      #0a0a0a 0%, 
+      #2d1b69 25%, 
+      #1e3a8a 50%, 
+      #0f3460 75%, 
+      #0a0a0a 100%);
   }
+}
 
-  .MatcLoginPageSection{
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
   }
-
-  .MatcLoginWrapper {
-    width: 300%;
-    display: flex;
-    align-items: stretch;
-    transition: all 0.2s;
-
-    &.login {
-      transform: translateX(0);
-    }
-
-    &.signup {
-      transform: translateX(-33.333%);
-    }
-
-    &.reset {
-      transform: translateX(-66.667%);
-    }
+  33% {
+    transform: translateY(-20px) rotate(120deg);
   }
-
-  .MatcLoginContent {
-    width: 33.3333%;
+  66% {
+    transform: translateY(10px) rotate(240deg);
   }
+}
 
-  .MatcLoginPageSection {
-    padding: 40px 40px;
+// Responsive Design
+@media (max-width: 768px) {
+  .MatcLoginPageDialog {
+    padding: 16px;
+    max-width: 100%;
   }
-
-  .MatcLoginCallToAction {
-    padding: 0;
+  
+  .MatcLoginPageContainer {
+    padding: 20px;
   }
+  
+  .MatcLoginTitle {
+    font-size: 22px;
+  }
+  
+  .MatcLoginSubtitle {
+    font-size: 13px;
+  }
+  
+  .MatcLoginForm {
+    min-height: 260px; // Slightly smaller on tablets
+  }
+  
+  .MatcFormInput {
+    padding: 10px;
+    font-size: 15px;
+  }
+  
+  .MatcLoginButton {
+    padding: 10px 18px;
+    font-size: 15px;
+  }
+}
 
-
+@media (max-width: 480px) {
+  .MatcLoginPageDialog {
+    padding: 12px;
+  }
+  
+  .MatcLoginPageContainer {
+    padding: 16px;
+  }
+  
+  .MatcLoginTitle {
+    font-size: 20px;
+  }
+  
+  .MatcLoginSubtitle {
+    font-size: 12px;
+  }
+  
+  .MatcLoginLogoIcon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .MatcLoginLogoIcon svg {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .MatcLoginForm {
+    min-height: 240px; // Even smaller on mobile
+    gap: 14px;
+  }
+  
+  .MatcFormInput {
+    padding: 10px;
+    font-size: 14px;
+  }
+  
+  .MatcLoginButton {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+  
+  .MatcCheckboxText {
+    font-size: 12px;
+  }
+  
+  .MatcLoginTabs {
+    margin-bottom: 16px;
+  }
+  
+  .MatcLoginHeader {
+    margin-bottom: 16px;
+  }
 }

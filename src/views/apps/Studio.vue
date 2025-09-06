@@ -126,7 +126,8 @@
 </template>
 <style lang="scss">
   @import "../../style/matc.scss";
-    @import "../../style/studio.scss";
+  @import "../../style/studio.scss";
+  @import "../../style/components/studio-glassmorphism.scss";
 </style>
 <script>
 import Logger from "common/Logger";

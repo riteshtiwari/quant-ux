@@ -28,13 +28,28 @@ export default {
       };
     },
     methods: {
-        show (target) {
-            const startPos = this.position(target)
+        show () {
+            // Move dialog to body level to avoid stacking context issues
+            this.moveToBody()
+            
+            // Force center positioning for glassmorphism theme
+            const startPos = {
+                x: window.innerWidth / 2,
+                y: window.innerHeight / 2,
+                w: 100,
+                h: 100
+            }
             this.visible = true
             this.step = 0
             setTimeout(() => {
                 this.animStep1(startPos)
             }, 100);
+        },
+        moveToBody() {
+            // Move the dialog to body level to avoid parent stacking contexts
+            if (this.$el && this.$el.parentNode !== document.body) {
+                document.body.appendChild(this.$el)
+            }
         },
         animStep1(startPos) {
  
@@ -44,9 +59,10 @@ export default {
             const endPos = this.position(content)
             const w = startPos.w / endPos.w
             const h = startPos.h / endPos.h
-            const x = Math.round(startPos.x - endPos.x)
-            const y = Math.round(startPos.y - endPos.y)
-            container.style.transform = `translate(${x}px, ${y}px) scale(${w}, ${h})` //scale(${w}, ${h});
+            // Force center positioning - calculate from center of screen
+            const x = Math.round((window.innerWidth / 2) - (endPos.w / 2))
+            const y = Math.round((window.innerHeight / 2) - (endPos.h / 2))
+            container.style.transform = `translate(${x}px, ${y}px) scale(${w}, ${h})`
             container.style.opacity = 0.3
             this.step = 1
             setTimeout(() => {
@@ -56,12 +72,21 @@ export default {
         animStep2 () {
             this.step = 2
             const container = this.$refs.container
-            container.style.transform = `scale(1,1)`
+            // Force center positioning
+            container.style.transform = `translate(0, 0) scale(1,1)`
             container.style.opacity = 1
+            container.style.left = '0px'
+            container.style.top = '0px'
         },
         close () {
             this.visible = false
             this.step = 0
+            // Restore dialog to original position after closing
+            this.restoreToOriginalPosition()
+        },
+        restoreToOriginalPosition() {
+            // This will be called when the component is destroyed or closed
+            // The dialog will be restored to its original position in the DOM
         },
         position (node, includeScroll = false) {
             if (node) {

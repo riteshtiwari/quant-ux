@@ -17,7 +17,7 @@ services:
       - QUX_KEYCLOAK_REALM=
       - QUX_KEYCLOAK_CLIENT=
       - QUX_KEYCLOAK_URL=
-      - QUX_WS_URL=ws://127.0.0.1:8086        # change to where the websocket server is deployed for external access
+      - QUX_WS_URL=ws://https://avon-necklace-twiki-nursery.trycloudflare.com       #tunneling through cloudflare 
     links:
       - mongo
       - qux-be
@@ -25,6 +25,8 @@ services:
       - 8082:8082        # change the left side port if your host machine already has 8082 in use
     depends_on:
       - qux-be
+    volumes:
+      - ../src:/home/node/src	
   qux-be:
     restart: always
     container_name: quant-ux-backend
@@ -43,7 +45,7 @@ services:
       - QUX_JWT_PASSWORD=some-long-string-of-mix-case-chars-and-nums        # you should change this to a real JWT secret
       - QUX_IMAGE_FOLDER_USER=/app-data/qux-images        # this folder should mapped in the volume
       - QUX_IMAGE_FOLDER_APPS=/app-data/qux-image-apps        # this folder should mapped in the volume
-      - TZ=America/Chicago        # change to your timezone
+      - TZ=America/Los_Angeles        # change to your timezone
       - QUX_AUTH_SERVICE=qux
       - QUX_KEYCLOAK_SERVER= # just the keycloak host & port
       - QUX_KEYCLOAK_REALM=

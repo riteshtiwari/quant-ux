@@ -94,6 +94,11 @@
     </div>
   </div>
 </template>
+
+<style lang="scss">
+@import "../../style/components/studio-glassmorphism.scss";
+</style>
+
 <script>
 import lang from 'dojo/_base/lang'
 import on from 'dojo/on'
@@ -269,6 +274,14 @@ export default {
         this.orginalEmail = this.user.email
         this.logger.info("mounted", "exit >> " + this.user.email);
       });
+    
+    // Add class to body for my-account page styling
+    document.body.classList.add('my-account-page')
+  },
+  
+  beforeDestroy() {
+    // Remove class when component is destroyed
+    document.body.classList.remove('my-account-page')
   }
 };
 </script>

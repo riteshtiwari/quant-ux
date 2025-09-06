@@ -1,0 +1,1965 @@
+@import '../variables.scss';
+
+// Studio Glassmorphism Theme - Matching Login Page Design
+.MatcStudio {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a0b2e 25%, #16213e 50%, #0f3460 75%, #0a0a0a 100%) !important;
+  color: #ffffff !important;
+  position: relative !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+}
+
+// Ensure body and html don't interfere with dialog positioning
+body, html {
+  position: relative !important;
+  overflow-x: visible !important;
+}
+
+// Ensure no parent elements create stacking contexts that interfere with dialogs
+.MatcStudio,
+.MatcSplitView,
+.MatcSplitViewChild,
+.MatcStudioNav {
+  z-index: auto !important;
+  transform: none !important;
+  isolation: auto !important;
+}
+
+// Force all possible parent containers to not interfere
+.MatcStudio * {
+  z-index: auto !important;
+}
+
+// Animated Background Elements
+.MatcStudio::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, 
+      #0a0a0a 0%, 
+      #1a0b2e 25%, 
+      #16213e 50%, 
+      #0f3460 75%, 
+      #0a0a0a 100%);
+    animation: gradientShift 8s ease-in-out infinite;
+    z-index: -2;
+  }
+
+.MatcStudio::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 80%, rgba(255, 0, 128, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(0, 212, 255, 0.1) 0%, transparent 50%);
+    animation: float 6s ease-in-out infinite;
+    z-index: -1;
+}
+
+// Navigation Sidebar Styling
+.MatcStudioNav {
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+
+  // Logo Section
+  .MatcStudioLogo {
+    color: #ffffff !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+
+    img {
+      filter: brightness(0) invert(1); // Make logo white
+    }
+  }
+
+  // Primary Button Styling
+  .MatcButtonPrimary {
+    background: linear-gradient(135deg, 
+      #ff0080 0%, 
+      #8b5cf6 50%, 
+      #00d4ff 100%) !important;
+    border: none !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 16px rgba(255, 0, 128, 0.3) !important;
+    transition: all 0.3s ease !important;
+    font-weight: 600 !important;
+
+    &:hover {
+      transform: translateY(-2px) !important;
+      box-shadow: 0 8px 24px rgba(255, 0, 128, 0.4) !important;
+    }
+  }
+
+  // Full Width Button Styling
+  .MatcButtonFullWidth {
+    background: linear-gradient(135deg, 
+      #ff0080 0%, 
+      #8b5cf6 50%, 
+      #00d4ff 100%) !important;
+    border: none !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 16px rgba(255, 0, 128, 0.3) !important;
+    transition: all 0.3s ease !important;
+    font-weight: 600 !important;
+    width: 100% !important;
+    padding: 16px !important;
+    height: 40px !important;
+    border-radius: 12px !important;
+
+    &:hover {
+      transform: translateY(-2px) !important;
+      box-shadow: 0 8px 24px rgba(255, 0, 128, 0.4) !important;
+    }
+  }
+
+  // Navigation Items
+  .MatcStudioNavItem {
+    color: rgba(255, 255, 255, 0.9) !important;
+    border-radius: 12px !important;
+    transition: all 0.2s ease !important;
+    padding: 8px 12px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.15) !important;
+      color: #ffffff !important;
+    }
+
+    .MatcQIcon {
+      color: rgba(255, 255, 255, 0.9) !important;
+    }
+
+    // Ensure all text is visible
+    span {
+      color: inherit !important;
+    }
+  }
+
+  // Section Headers and Labels
+  h4 {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 600 !important;
+    margin: 16px 0 8px 0 !important;
+  }
+
+  // Icons and SVG elements
+  .MatcQIcon {
+    color: rgba(255, 255, 255, 0.9) !important;
+    
+    .MatcQIconSVG {
+      stroke: rgba(255, 255, 255, 0.9) !important;
+      fill: rgba(255, 255, 255, 0.9) !important;
+    }
+  }
+
+  // Icon buttons and dropdowns
+  .MatcButtonIcon {
+    background: linear-gradient(135deg, 
+      rgba(255, 0, 128, 0.15) 0%, 
+      rgba(139, 92, 246, 0.15) 50%,
+      rgba(0, 212, 255, 0.15) 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: #ffffff !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 16px rgba(255, 0, 128, 0.2) !important;
+
+    &:hover {
+      background: linear-gradient(135deg, 
+        rgba(255, 0, 128, 0.25) 0%, 
+        rgba(139, 92, 246, 0.25) 50%,
+        rgba(0, 212, 255, 0.25) 100%) !important;
+      border-color: rgba(255, 255, 255, 0.3) !important;
+      color: #ffffff !important;
+      transform: translateY(-2px) !important;
+      box-shadow: 0 8px 24px rgba(255, 0, 128, 0.3) !important;
+    }
+
+    .MatcQIcon {
+      color: inherit !important;
+    }
+  }
+
+  // Specific override for the share icon button
+  .MatcButton.MatcButtonXS.MatcButtonSecondary.MatcButtonIcon.MatcRoundButton {
+    background: linear-gradient(135deg, 
+      rgba(255, 0, 128, 0.15) 0%, 
+      rgba(139, 92, 246, 0.15) 50%,
+      rgba(0, 212, 255, 0.15) 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: #ffffff !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 16px rgba(255, 0, 128, 0.2) !important;
+
+    &:hover {
+      background: linear-gradient(135deg, 
+        rgba(255, 0, 128, 0.25) 0%, 
+        rgba(139, 92, 246, 0.25) 50%,
+        rgba(0, 212, 255, 0.25) 100%) !important;
+      border-color: rgba(255, 255, 255, 0.3) !important;
+      color: #ffffff !important;
+      transform: translateY(-2px) !important;
+      box-shadow: 0 8px 24px rgba(255, 0, 128, 0.3) !important;
+    }
+  }
+
+  // Tooltips
+  .vommondToolTip {
+    background: rgba(0, 0, 0, 0.9) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  }
+
+  // Links and Action Links
+  .MatcLink {
+    color: rgba(255, 255, 255, 0.8) !important;
+    
+    &:hover {
+      color: #ffffff !important;
+    }
+  }
+
+  .MatcActionLink {
+    color: #00d4ff !important;
+    
+    &:hover {
+      color: #ffffff !important;
+    }
+  }
+
+  // Secondary Buttons (Edit Design, etc.)
+  .MatcButtonSecondary {
+    background: linear-gradient(135deg, 
+      rgba(255, 0, 128, 0.15) 0%, 
+      rgba(139, 92, 246, 0.15) 50%,
+      rgba(0, 212, 255, 0.15) 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: #ffffff !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 16px rgba(255, 0, 128, 0.2) !important;
+
+    &:hover {
+      background: linear-gradient(135deg, 
+        rgba(255, 0, 128, 0.25) 0%, 
+        rgba(139, 92, 246, 0.25) 50%,
+        rgba(0, 212, 255, 0.25) 100%) !important;
+      border-color: rgba(255, 255, 255, 0.3) !important;
+      color: #ffffff !important;
+      transform: translateY(-2px) !important;
+      box-shadow: 0 8px 24px rgba(255, 0, 128, 0.3) !important;
+    }
+  }
+
+  // Specific overrides for the header buttons
+  .MatcButton.MatcButtonXS.MatcButtonSecondary.MatcButtonSecondaryBlue.MatcRoundButton {
+    background: linear-gradient(135deg, 
+      rgba(255, 0, 128, 0.15) 0%, 
+      rgba(139, 92, 246, 0.15) 50%,
+      rgba(0, 212, 255, 0.15) 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: #ffffff !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 16px rgba(255, 0, 128, 0.2) !important;
+
+    &:hover {
+      background: linear-gradient(135deg, 
+        rgba(255, 0, 128, 0.25) 0%, 
+        rgba(139, 92, 246, 0.25) 50%,
+        rgba(0, 212, 255, 0.25) 100%) !important;
+      border-color: rgba(255, 255, 255, 0.3) !important;
+      color: #ffffff !important;
+      transform: translateY(-2px) !important;
+      box-shadow: 0 8px 24px rgba(255, 0, 128, 0.3) !important;
+    }
+  }
+
+  .MatcButtonSecondaryBlue {
+    background: linear-gradient(135deg, 
+      rgba(0, 212, 255, 0.2) 0%, 
+      rgba(139, 92, 246, 0.2) 100%) !important;
+    border: 1px solid rgba(0, 212, 255, 0.4) !important;
+    color: #00d4ff !important;
+    font-weight: 600 !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    box-shadow: 0 4px 16px rgba(0, 212, 255, 0.2) !important;
+
+    &:hover {
+      background: linear-gradient(135deg, 
+        rgba(0, 212, 255, 0.3) 0%, 
+        rgba(139, 92, 246, 0.3) 100%) !important;
+      border-color: rgba(0, 212, 255, 0.6) !important;
+      color: #ffffff !important;
+      transform: translateY(-2px) !important;
+      box-shadow: 0 8px 24px rgba(0, 212, 255, 0.3) !important;
+    }
+  }
+
+  // Dropdown buttons (three-dot menu, etc.)
+  .MatcQIconDropDown {
+    background: linear-gradient(135deg, 
+      rgba(255, 0, 128, 0.15) 0%, 
+      rgba(139, 92, 246, 0.15) 50%,
+      rgba(0, 212, 255, 0.15) 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: #ffffff !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 16px rgba(255, 0, 128, 0.2) !important;
+
+    &:hover {
+      background: linear-gradient(135deg, 
+        rgba(255, 0, 128, 0.25) 0%, 
+        rgba(139, 92, 246, 0.25) 50%,
+        rgba(0, 212, 255, 0.25) 100%) !important;
+      border-color: rgba(255, 255, 255, 0.3) !important;
+      color: #ffffff !important;
+      transform: translateY(-2px) !important;
+      box-shadow: 0 8px 24px rgba(255, 0, 128, 0.3) !important;
+    }
+  }
+
+  // App List Styling
+  .MatcStudioAppList {
+    .MatcStudioAppListSelected {
+      background: linear-gradient(135deg, 
+        rgba(255, 0, 128, 0.2) 0%, 
+        rgba(139, 92, 246, 0.2) 50%, 
+        rgba(0, 212, 255, 0.2) 100%) !important;
+      border: 1px solid rgba(255, 255, 255, 0.2) !important;
+      color: #ffffff !important;
+    }
+
+    a {
+      color: rgba(255, 255, 255, 0.8) !important;
+      border-radius: 12px !important;
+      transition: all 0.2s ease !important;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.1) !important;
+        color: #ffffff !important;
+      }
+    }
+
+    .MatcStudioAppListLoading {
+      color: rgba(255, 255, 255, 0.8) !important;
+      font-size: 14px !important;
+      padding: 12px !important;
+      text-align: center !important;
+    }
+  }
+
+  // Section Headers
+  h4 {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 600 !important;
+  }
+}
+
+// Main Content Area
+.StudioOverview {
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(15px) !important;
+  -webkit-backdrop-filter: blur(15px) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+
+  // Header Styling
+  .StudioOverviewHeader {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+
+    // Force override all buttons in header
+    .MatcButton {
+      background: linear-gradient(135deg, 
+        rgba(255, 0, 128, 0.15) 0%, 
+        rgba(139, 92, 246, 0.15) 50%,
+        rgba(0, 212, 255, 0.15) 100%) !important;
+      border: 1px solid rgba(255, 255, 255, 0.2) !important;
+      color: #ffffff !important;
+      backdrop-filter: blur(20px) !important;
+      -webkit-backdrop-filter: blur(20px) !important;
+      transition: all 0.3s ease !important;
+      box-shadow: 0 4px 16px rgba(255, 0, 128, 0.2) !important;
+
+      &:hover {
+        background: linear-gradient(135deg, 
+          rgba(255, 0, 128, 0.25) 0%, 
+          rgba(139, 92, 246, 0.25) 50%,
+          rgba(0, 212, 255, 0.25) 100%) !important;
+        border-color: rgba(255, 255, 255, 0.3) !important;
+        color: #ffffff !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 8px 24px rgba(255, 0, 128, 0.3) !important;
+      }
+    }
+    
+    input {
+      background: transparent !important;
+      border: none !important;
+      color: #ffffff !important;
+      font-size: 24px !important;
+      font-weight: 600 !important;
+      padding: 8px 0 !important;
+      width: 300px !important;
+      outline: none !important;
+
+      &::placeholder {
+        color: rgba(255, 255, 255, 0.4) !important;
+      }
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.05) !important;
+        border-radius: 8px !important;
+        padding: 8px 12px !important;
+        margin: 0 -12px !important;
+      }
+
+      &:focus {
+        background: rgba(255, 255, 255, 0.08) !important;
+        border-radius: 8px !important;
+        padding: 8px 12px !important;
+        margin: 0 -12px !important;
+        box-shadow: 0 0 0 2px rgba(255, 0, 128, 0.3) !important;
+      }
+    }
+  }
+
+  // Tabs Styling
+  .MatcTabs {
+    a {
+      color: rgba(255, 255, 255, 0.6) !important;
+      border-bottom: 2px solid transparent !important;
+      transition: all 0.2s ease !important;
+
+      &:hover {
+        color: rgba(255, 255, 255, 0.8) !important;
+      }
+
+      &.MatcTabActive {
+        color: #ffffff !important;
+        border-bottom: 2px solid #ff0080 !important;
+      }
+    }
+  }
+
+  // Content Sections
+  .StudioOverviewContent {
+    color: #ffffff !important;
+    
+    h3 {
+      color: #ffffff !important;
+      font-weight: 600 !important;
+      margin-bottom: 16px !important;
+    }
+    
+    p, div, span {
+      color: rgba(255, 255, 255, 0.9) !important;
+    }
+    
+    .MatcHint {
+      color: rgba(255, 255, 255, 0.6) !important;
+      font-size: 12px !important;
+    }
+
+    // AutoTextArea styling
+    .MatcAutoTextArea {
+      background: rgba(255, 255, 255, 0.05) !important;
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+      color: #ffffff !important;
+      border-radius: 12px !important;
+      backdrop-filter: blur(10px) !important;
+      -webkit-backdrop-filter: blur(10px) !important;
+      padding: 12px !important;
+      min-height: 80px !important;
+
+      &::placeholder {
+        color: rgba(255, 255, 255, 0.4) !important;
+      }
+
+      &:hover {
+        border-color: rgba(255, 255, 255, 0.2) !important;
+        background: rgba(255, 255, 255, 0.08) !important;
+      }
+
+      &:focus {
+        border-color: rgba(255, 0, 128, 0.5) !important;
+        box-shadow: 0 0 0 3px rgba(255, 0, 128, 0.1) !important;
+        outline: none !important;
+      }
+    }
+  }
+
+  // Studio Details (Right Panel)
+.StudioDetails {
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(15px) !important;
+  -webkit-backdrop-filter: blur(15px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+  padding: 16px !important;
+  height: 100% !important;
+  overflow-y: auto !important;
+
+  .StudioDetailsHeader {
+    color: #ffffff !important;
+    
+    h4 {
+      color: #ffffff !important;
+      font-weight: 600 !important;
+    }
+  }
+
+  .MatcActionLink {
+    color: #00d4ff !important;
+    
+    &:hover {
+      color: #ffffff !important;
+    }
+  }
+
+  // Loading State
+  .MatcLoading {
+    color: rgba(255, 255, 255, 0.8) !important;
+    text-align: center !important;
+    padding: 32px !important;
+    font-size: 16px !important;
+  }
+}
+
+// KPI Cards
+.StudioDetailsKPI {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  color: #ffffff !important;
+
+  h4 {
+    color: #ffffff !important;
+  }
+
+  label {
+    color: rgba(255, 255, 255, 0.7) !important;
+  }
+}
+
+  // Comments
+  .StudioComment {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    color: #ffffff !important;
+
+    textarea {
+      background: rgba(255, 255, 255, 0.05) !important;
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+      color: #ffffff !important;
+      border-radius: 8px !important;
+
+      &::placeholder {
+        color: rgba(255, 255, 255, 0.4) !important;
+      }
+
+      &:hover {
+        border-color: rgba(255, 255, 255, 0.2) !important;
+      }
+
+      &:focus {
+        border-color: rgba(255, 0, 128, 0.5) !important;
+        box-shadow: 0 0 0 3px rgba(255, 0, 128, 0.1) !important;
+      }
+    }
+  }
+}
+
+// Welcome Screen
+.MatcStudioWelcome {
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(15px) !important;
+  -webkit-backdrop-filter: blur(15px) !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  text-align: center !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+
+  h3 {
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    font-size: 24px !important;
+    margin-bottom: 16px !important;
+  }
+  
+  div {
+    color: rgba(255, 255, 255, 0.8) !important;
+    font-size: 16px !important;
+    line-height: 1.6 !important;
+  }
+}
+
+// Notifications
+.StudioNotification {
+  .StudioNotificationBubble {
+    background: #ff0080 !important;
+    box-shadow: 0 0 8px rgba(255, 0, 128, 0.5) !important;
+  }
+}
+
+// Color Dropdown
+.StudioColorDropDown {
+  .StudioColorDropDownDot {
+    border: 2px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3) !important;
+
+    &:hover {
+      box-shadow: 0 0 12px rgba(255, 0, 128, 0.5) !important;
+    }
+  }
+}
+
+// Animations
+@keyframes gradientShift {
+  0%, 100% {
+    background: linear-gradient(135deg, 
+      #0a0a0a 0%, 
+      #1a0b2e 25%, 
+      #16213e 50%, 
+      #0f3460 75%, 
+      #0a0a0a 100%);
+  }
+  50% {
+    background: linear-gradient(135deg, 
+      #0a0a0a 0%, 
+      #2d1b69 25%, 
+      #1e3a8a 50%, 
+      #0f3460 75%, 
+      #0a0a0a 100%);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-20px) rotate(120deg);
+  }
+  66% {
+    transform: translateY(10px) rotate(240deg);
+  }
+}
+
+// Split View Styling for Glassmorphism
+.MatcSplitView {
+  .MatcSplitViewChildBorder.MatcSplitViewLeft {
+    border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
+  }
+
+  .MatcSplitViewChildBorder.MatcSplitViewRight {
+    border-left: 1px solid rgba(255, 255, 255, 0.1) !important;
+  }
+
+  .MatcSplitViewHandler {
+    background: rgba(255, 255, 255, 0.2) !important;
+    border-radius: 50px !important;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.4) !important;
+    }
+  }
+
+  .MatcCollapseViewHandler {
+    .MatcCollapseViewHandlerTop,
+    .MatcCollapseViewHandlerBottom {
+      background: rgba(255, 255, 255, 0.2) !important;
+    }
+
+    &:hover {
+      .MatcCollapseViewHandlerTop,
+      .MatcCollapseViewHandlerBottom {
+        background: rgba(255, 255, 255, 0.4) !important;
+      }
+    }
+  }
+}
+
+// Test Tab Styling
+.MatcTest {
+  // Box containers (white cards in Test tab)
+  .box {
+    background: rgba(255, 255, 255, 0.05) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2) !important;
+    color: #ffffff !important;
+    padding: 24px !important;
+
+    .title {
+      color: #ffffff !important;
+      font-weight: 600 !important;
+      margin-bottom: 16px !important;
+    }
+
+    // Form controls within boxes
+    .form-control {
+      background: rgba(255, 255, 255, 0.05) !important;
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+      color: #ffffff !important;
+      border-radius: 12px !important;
+      backdrop-filter: blur(10px) !important;
+      -webkit-backdrop-filter: blur(10px) !important;
+
+      &::placeholder {
+        color: rgba(255, 255, 255, 0.4) !important;
+      }
+
+      &:hover {
+        border-color: rgba(255, 255, 255, 0.2) !important;
+        background: rgba(255, 255, 255, 0.08) !important;
+      }
+
+      &:focus {
+        border-color: rgba(255, 0, 128, 0.5) !important;
+        box-shadow: 0 0 0 3px rgba(255, 0, 128, 0.1) !important;
+        outline: none !important;
+      }
+    }
+
+    // Text areas
+    .MatcTextAreaMedium {
+      background: rgba(255, 255, 255, 0.05) !important;
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+      color: #ffffff !important;
+      border-radius: 12px !important;
+      backdrop-filter: blur(10px) !important;
+      -webkit-backdrop-filter: blur(10px) !important;
+      min-height: 100px !important;
+      padding: 12px !important;
+
+      &::placeholder {
+        color: rgba(255, 255, 255, 0.4) !important;
+      }
+
+      &:hover {
+        border-color: rgba(255, 255, 255, 0.2) !important;
+        background: rgba(255, 255, 255, 0.08) !important;
+      }
+
+      &:focus {
+        border-color: rgba(255, 0, 128, 0.5) !important;
+        box-shadow: 0 0 0 3px rgba(255, 0, 128, 0.1) !important;
+        outline: none !important;
+      }
+    }
+
+    // Buttons within boxes
+    .MatcButton {
+      background: linear-gradient(135deg, 
+        rgba(255, 0, 128, 0.15) 0%, 
+        rgba(139, 92, 246, 0.15) 50%,
+        rgba(0, 212, 255, 0.15) 100%) !important;
+      border: 1px solid rgba(255, 255, 255, 0.2) !important;
+      color: #ffffff !important;
+      backdrop-filter: blur(15px) !important;
+      -webkit-backdrop-filter: blur(15px) !important;
+      transition: all 0.3s ease !important;
+      box-shadow: 0 4px 16px rgba(255, 0, 128, 0.2) !important;
+
+      &:hover {
+        background: linear-gradient(135deg, 
+          rgba(255, 0, 128, 0.25) 0%, 
+          rgba(139, 92, 246, 0.25) 50%,
+          rgba(0, 212, 255, 0.25) 100%) !important;
+        border-color: rgba(255, 255, 255, 0.3) !important;
+        color: #ffffff !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 8px 24px rgba(255, 0, 128, 0.3) !important;
+      }
+    }
+
+    // Checkboxes
+    .VommondCheckBox {
+      background: rgba(255, 255, 255, 0.05) !important;
+      border: 1px solid rgba(255, 255, 255, 0.2) !important;
+      border-radius: 6px !important;
+      backdrop-filter: blur(10px) !important;
+      -webkit-backdrop-filter: blur(10px) !important;
+
+      &:hover {
+        border-color: rgba(255, 0, 128, 0.5) !important;
+        background: rgba(255, 255, 255, 0.08) !important;
+      }
+    }
+
+    .VommondCheckBoxChecked {
+      background: linear-gradient(135deg, 
+        rgba(255, 0, 128, 0.2) 0%, 
+        rgba(139, 92, 246, 0.2) 50%, 
+        rgba(0, 212, 255, 0.2) 100%) !important;
+      border-color: rgba(255, 0, 128, 0.6) !important;
+    }
+
+    // Tables
+    .MatcDashTable {
+      background: rgba(255, 255, 255, 0.02) !important;
+      border-radius: 12px !important;
+      overflow: hidden !important;
+
+      table {
+        background: transparent !important;
+        color: #ffffff !important;
+
+        th, td {
+          background: transparent !important;
+          color: #ffffff !important;
+          border-color: rgba(255, 255, 255, 0.1) !important;
+        }
+
+        th {
+          background: rgba(255, 255, 255, 0.05) !important;
+          font-weight: 600 !important;
+        }
+
+        // Override the dash.scss table header color that was causing black text
+        thead, thead a {
+          color: #ffffff !important;
+          font-weight: 700 !important;
+        }
+
+        tr:hover {
+          background: rgba(255, 255, 255, 0.05) !important;
+        }
+
+        // Action buttons in table cells
+        .MatcButton {
+          background: linear-gradient(135deg, 
+            rgba(255, 0, 128, 0.15) 0%, 
+            rgba(139, 92, 246, 0.15) 50%,
+            rgba(0, 212, 255, 0.15) 100%) !important;
+          border: 1px solid rgba(255, 255, 255, 0.2) !important;
+          color: #ffffff !important;
+          backdrop-filter: blur(15px) !important;
+          -webkit-backdrop-filter: blur(15px) !important;
+          transition: all 0.3s ease !important;
+          box-shadow: 0 4px 16px rgba(255, 0, 128, 0.2) !important;
+          border-radius: 8px !important;
+          padding: 8px !important;
+          min-width: 32px !important;
+          height: 32px !important;
+
+          &:hover {
+            background: linear-gradient(135deg, 
+              rgba(255, 0, 128, 0.25) 0%, 
+              rgba(139, 92, 246, 0.25) 50%,
+              rgba(0, 212, 255, 0.25) 100%) !important;
+            border-color: rgba(255, 255, 255, 0.3) !important;
+            color: #ffffff !important;
+            transform: translateY(-1px) !important;
+            box-shadow: 0 6px 20px rgba(255, 0, 128, 0.3) !important;
+          }
+        }
+
+        // Icon buttons specifically
+        .MatcButtonIcon {
+          background: linear-gradient(135deg, 
+            rgba(255, 0, 128, 0.15) 0%, 
+            rgba(139, 92, 246, 0.15) 50%,
+            rgba(0, 212, 255, 0.15) 100%) !important;
+          border: 1px solid rgba(255, 255, 255, 0.2) !important;
+          color: #ffffff !important;
+          backdrop-filter: blur(15px) !important;
+          -webkit-backdrop-filter: blur(15px) !important;
+          transition: all 0.3s ease !important;
+          box-shadow: 0 4px 16px rgba(255, 0, 128, 0.2) !important;
+          border-radius: 8px !important;
+          padding: 8px !important;
+          min-width: 32px !important;
+          height: 32px !important;
+
+          &:hover {
+            background: linear-gradient(135deg, 
+              rgba(255, 0, 128, 0.25) 0%, 
+              rgba(139, 92, 246, 0.25) 50%,
+              rgba(0, 212, 255, 0.25) 100%) !important;
+            border-color: rgba(255, 255, 255, 0.3) !important;
+            color: #ffffff !important;
+            transform: translateY(-1px) !important;
+            box-shadow: 0 6px 20px rgba(255, 0, 128, 0.3) !important;
+          }
+        }
+      }
+    }
+
+    // Tags and pills
+    .tag {
+      background: rgba(255, 255, 255, 0.1) !important;
+      color: #ffffff !important;
+      border: 1px solid rgba(255, 255, 255, 0.2) !important;
+      border-radius: 8px !important;
+    }
+
+    // Hints and labels
+    .MatcHint {
+      color: rgba(255, 255, 255, 0.6) !important;
+    }
+
+    // Analytics specific components
+    .MatcDashNumberContainer {
+      color: #ffffff !important;
+    }
+
+    .MatcDashLabel {
+      color: rgba(255, 255, 255, 0.8) !important;
+    }
+
+    .MatcDashNumber {
+      color: #ffffff !important;
+      font-weight: 600 !important;
+    }
+
+    .MatcDashLabelHint {
+      color: rgba(255, 255, 255, 0.6) !important;
+    }
+
+    // Scatter Plot Styling for Glassmorphism Theme
+    .MatcScatterPlot {
+      .MatcScatterPlotCntr {
+        background: rgba(255, 255, 255, 0.05) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        backdrop-filter: blur(10px) !important;
+        -webkit-backdrop-filter: blur(10px) !important;
+      }
+
+      // Axis labels - make them white/light
+      .MatxAxisLabel {
+        color: rgba(255, 255, 255, 0.8) !important;
+        font-size: 14px !important;
+      }
+
+      .MatxAxisLabel.xLabel,
+      .MatxAxisLabel.yLabel,
+      .MatxAxisLabel.yLabelEast,
+      .MatxAxisLabel.bottom25Label,
+      .MatxAxisLabel.bottom75Label {
+        color: rgba(255, 255, 255, 0.6) !important;
+      }
+
+      // Grid lines - make them subtle white
+      .MatxAxisXLine,
+      .MatxAxisYLine {
+        border-color: rgba(255, 255, 255, 0.2) !important;
+      }
+
+      .MatcScatterPlotCntrHover .MatxAxisYLine,
+      .MatcScatterPlotCntrHover .MatxAxisXLine {
+        border-color: rgba(255, 255, 255, 0.4) !important;
+      }
+
+      .MatcScatterPlotCntrHover .yMiddleLabel,
+      .MatcScatterPlotCntrHover .xMiddleLabel {
+        color: rgba(255, 255, 255, 0.9) !important;
+      }
+
+      // Task legend styling
+      .MatcScatterPlotfTaskCntr {
+        label {
+          color: rgba(255, 255, 255, 0.8) !important;
+          
+          &:hover {
+            color: rgba(255, 255, 255, 0.9) !important;
+          }
+        }
+
+        .MatcScatterPlotfTaskSelected label {
+          color: rgba(255, 255, 255, 0.9) !important;
+        }
+
+        span {
+          border-color: rgba(255, 255, 255, 0.3) !important;
+        }
+      }
+
+      // Hint bar styling
+      .MatcScatterPlotHintBar {
+        color: rgba(255, 255, 255, 0.8) !important;
+      }
+
+      // Box plot styling
+      .MatcScatterPlotBoxPlotCntr {
+        border-color: rgba(255, 255, 255, 0.3) !important;
+      }
+
+      .MatcScatterPlotBoxPlotLine {
+        border-color: rgba(255, 255, 255, 0.3) !important;
+      }
+
+      .MatcScatterPlotBoxPlotMean {
+        background: rgba(255, 255, 255, 0.8) !important;
+      }
+    }
+
+    // Progress bars
+    .MatcProgressBar {
+      background: rgba(255, 255, 255, 0.1) !important;
+      border-radius: 8px !important;
+      overflow: hidden !important;
+
+      .MatcProgressBarFill {
+        background: linear-gradient(135deg, 
+          rgba(255, 0, 128, 0.8) 0%, 
+          rgba(139, 92, 246, 0.8) 50%,
+          rgba(0, 212, 255, 0.8) 100%) !important;
+      }
+    }
+
+    // Level components (Bulma)
+    .level {
+      .title {
+        color: #ffffff !important;
+      }
+    }
+
+    // Columns (Bulma)
+    .columns {
+      .column {
+        color: #ffffff !important;
+      }
+    }
+
+    // Warning boxes
+    .MatcWarningBox {
+      background: rgba(255, 193, 7, 0.1) !important;
+      border: 1px solid rgba(255, 193, 7, 0.3) !important;
+      color: #ffffff !important;
+      backdrop-filter: blur(15px) !important;
+      -webkit-backdrop-filter: blur(15px) !important;
+
+      .title {
+        color: #ffffff !important;
+      }
+
+      p {
+        color: rgba(255, 255, 255, 0.8) !important;
+      }
+    }
+  }
+}
+
+// ZoomDialog Fix for Glassmorphism Theme - Force highest priority
+// Use maximum z-index and ensure it's above any backdrop-filter elements
+body .ZoomDialogBackground {
+  position: fixed !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 2147483647 !important; /* Maximum z-index value */
+  top: 0px !important;
+  left: 0px !important;
+  background: rgba(0, 0, 0, 0.9) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  isolation: isolate !important;
+  pointer-events: auto !important;
+  /* Force new stacking context above everything */
+  transform: translateZ(0) !important;
+  will-change: transform !important;
+}
+
+body .ZoomDialogContainer {
+  transform-origin: center center !important;
+  position: relative !important;
+  transform: translate(0, 0) !important;
+  left: 0 !important;
+  top: 0 !important;
+  z-index: 2147483647 !important; /* Maximum z-index value */
+}
+
+// Force center positioning regardless of JavaScript calculations
+body .ZoomDialogContainer[style*="transform"] {
+  transform: translate(0, 0) scale(1, 1) !important;
+  left: 0 !important;
+  top: 0 !important;
+  opacity: 1 !important;
+}
+
+// Override any inline styles set by JavaScript
+body .ZoomDialogContainer[style] {
+  transform: translate(0, 0) scale(1, 1) !important;
+  left: 0 !important;
+  top: 0 !important;
+  opacity: 1 !important;
+}
+
+// Ensure the dialog wrapper is properly positioned
+body .ZoomDialogWrapper {
+  position: relative !important;
+  margin: auto !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+  color: #ffffff !important;
+  z-index: 2147483647 !important; /* Maximum z-index value */
+}
+
+.ZoomDialogContent {
+  color: #ffffff !important;
+  
+  h1, h2, h3, h4, h5, h6 {
+    color: #ffffff !important;
+  }
+  
+  p, div, span, label {
+    color: rgba(255, 255, 255, 0.9) !important;
+  }
+  
+  .form-control {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+    border-radius: 12px !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.4) !important;
+    }
+
+    &:hover {
+      border-color: rgba(255, 255, 255, 0.2) !important;
+      background: rgba(255, 255, 255, 0.08) !important;
+    }
+
+    &:focus {
+      border-color: rgba(255, 0, 128, 0.5) !important;
+      box-shadow: 0 0 0 3px rgba(255, 0, 128, 0.1) !important;
+      outline: none !important;
+    }
+  }
+  
+  .MatcButton {
+    background: linear-gradient(135deg, 
+      rgba(255, 0, 128, 0.15) 0%, 
+      rgba(139, 92, 246, 0.15) 50%,
+      rgba(0, 212, 255, 0.15) 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: #ffffff !important;
+    backdrop-filter: blur(15px) !important;
+    -webkit-backdrop-filter: blur(15px) !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 16px rgba(255, 0, 128, 0.2) !important;
+
+    &:hover {
+      background: linear-gradient(135deg, 
+        rgba(255, 0, 128, 0.25) 0%, 
+        rgba(139, 92, 246, 0.25) 50%,
+        rgba(0, 212, 255, 0.25) 100%) !important;
+      border-color: rgba(255, 255, 255, 0.3) !important;
+      color: #ffffff !important;
+      transform: translateY(-2px) !important;
+      box-shadow: 0 8px 24px rgba(255, 0, 128, 0.3) !important;
+    }
+  }
+  
+  .MatcButtonPrimary {
+    background: linear-gradient(135deg, 
+      #ff0080 0%, 
+      #8b5cf6 50%, 
+      #00d4ff 100%) !important;
+    border: none !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 16px rgba(255, 0, 128, 0.3) !important;
+    transition: all 0.3s ease !important;
+    font-weight: 600 !important;
+
+    &:hover {
+      transform: translateY(-2px) !important;
+      box-shadow: 0 8px 24px rgba(255, 0, 128, 0.4) !important;
+    }
+  }
+  
+  .MatcLinkButton {
+    color: rgba(255, 255, 255, 0.8) !important;
+    
+    &:hover {
+      color: #ffffff !important;
+    }
+  }
+  
+  .MatcError {
+    color: #ff6b6b !important;
+  }
+  
+  .MatcHint {
+    color: rgba(255, 255, 255, 0.6) !important;
+  }
+  
+  // Tab styling for notifications
+  .MatcToolbarTabs {
+    a {
+      color: rgba(255, 255, 255, 0.6) !important;
+      border-bottom: 2px solid transparent !important;
+      transition: all 0.2s ease !important;
+
+      &:hover {
+        color: rgba(255, 255, 255, 0.8) !important;
+      }
+
+      &.MatcToolbarTabActive {
+        color: #ffffff !important;
+        border-bottom: 2px solid #ff0080 !important;
+      }
+    }
+  }
+  
+  // Notification items - based on original studio.scss layout
+  .StudioNotificationItem {
+    display: flex !important;
+    gap: 32px !important;
+    padding-bottom: 32px !important;
+    align-items: flex-start !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+
+    &:last-child {
+      border-bottom: none !important;
+    }
+
+    .StudioNotificationItemImage {
+      height: 80px !important;
+      width: 80px !important;
+      background: rgba(255, 255, 255, 0.1) !important;
+      flex-shrink: 0 !important;
+      border-radius: 12px !important;
+      object-fit: cover !important;
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    }
+
+    .StudioNotificationItemBody {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 4px !important;
+      padding-right: 16px !important;
+      flex: 1 !important;
+    }
+
+    .StudioNotificationItemHeader {
+      display: flex !important;
+      gap: 4px !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      margin-bottom: 8px !important;
+
+      h3 {
+        margin: 0 !important;
+        font-size: 16px !important;
+        color: #ffffff !important;
+        font-weight: 600 !important;
+      }
+
+      span {
+        font-size: 14px !important;
+        color: rgba(255, 255, 255, 0.6) !important;
+      }
+    }
+
+    p {
+      font-size: 16px !important;
+      margin-bottom: 8px !important;
+      color: rgba(255, 255, 255, 0.8) !important;
+      line-height: 1.5 !important;
+    }
+
+    a {
+      display: inline !important;
+      color: rgba(255, 0, 128, 0.8) !important;
+      text-decoration: none !important;
+      
+      &:hover {
+        color: rgba(255, 0, 128, 1) !important;
+      }
+    }
+  }
+  
+  .StudioNotificationContainer {
+    margin-top: 32px !important;
+    height: 480px !important;
+    overflow: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 32px !important;
+    background: rgba(255, 255, 255, 0.02) !important;
+    border-radius: 12px !important;
+    padding: 16px !important;
+  }
+  
+  .StudioNotificationItemLine {
+    padding-top: 16px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    margin-bottom: 16px !important;
+  }
+
+  .MatcHint {
+    color: rgba(255, 255, 255, 0.6) !important;
+    text-align: center !important;
+    padding: 32px !important;
+    font-style: italic !important;
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .MatcStudioNav {
+    padding: 12px !important;
+  }
+  
+  .StudioOverviewContent {
+    padding: 32px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .MatcStudioNav {
+    padding: 8px !important;
+  }
+  
+  .StudioOverviewContent {
+    padding: 16px !important;
+  }
+}
+
+// Dialog Styling for Glassmorphism Theme
+.MatcDialog {
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+  color: #ffffff !important;
+  padding: 24px !important;
+}
+
+.MatcDialogXL {
+  width: 800px !important;
+  min-height: 400px !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+  color: #ffffff !important;
+  padding: 24px !important;
+}
+
+// Fix tabs styling that might be broken by glassmorphism - only for my-account page
+.MatcTabs:not(.MatcStudio .MatcTabs) {
+  a {
+    color: rgba(255, 255, 255, 0.8) !important;
+    text-decoration: none !important;
+    padding: 12px 16px !important;
+    border-radius: 8px !important;
+    transition: all 0.2s ease !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    
+    &:hover {
+      color: #ffffff !important;
+      background: rgba(255, 255, 255, 0.1) !important;
+    }
+    
+    &.MatcTabActive {
+      color: #ffffff !important;
+      background: rgba(255, 0, 128, 0.2) !important;
+      border-bottom: 2px solid rgba(255, 0, 128, 0.8) !important;
+    }
+  }
+}
+
+// Fix Studio page button and icon alignment issues
+.MatcStudio {
+  // Fix Create button alignment
+  .MatcButton.MatcButtonFullWidth {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    
+    .QIcon, .MatcIcon {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+    
+    span {
+      display: flex !important;
+      align-items: center !important;
+    }
+  }
+  
+  // Fix Edit Design button alignment
+  .MatcButtonSecondary {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    padding: 8px 16px !important;
+    
+    .QIcon, .MatcIcon {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+  }
+  
+  // Fix icon buttons alignment
+  .MatcButtonIcon {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 8px !important;
+    
+    .QIcon, .MatcIcon {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+  }
+  
+  // Fix round buttons
+  .MatcRoundButton {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    
+    .QIcon, .MatcIcon {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+  }
+}
+
+// Header Glassmorphism Theme - More Specific Selectors to Override menu.scss
+.VommondContentContainer .MatcHeader,
+body .MatcHeader,
+.MatcHeader {
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+  margin: 16px auto !important;
+  padding: 16px 24px !important;
+  color: #ffffff !important;
+  max-width: 1152px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  font-size: 16px !important;
+  margin-bottom: 24px !important;
+  
+  a {
+    color: rgba(255, 255, 255, 0.9) !important;
+    text-decoration: none !important;
+    transition: all 0.2s ease !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    
+    &:hover {
+      color: #ffffff !important;
+      transform: translateY(-1px) !important;
+    }
+  }
+  
+  .MatcHeaderLogo {
+    filter: brightness(0) invert(1) !important;
+    height: 24px !important;
+    width: 24px !important;
+  }
+  
+  .MatcHeaderLeft {
+    display: flex !important;
+    align-items: center !important;
+    height: 100% !important;
+    padding: 0px !important;
+    gap: 16px !important;
+    width: 256px !important;
+    font-size: 16px !important;
+    
+    a {
+      font-weight: 600 !important;
+      font-size: 18px !important;
+    }
+  }
+  
+  .MatcHeaderCenter {
+    display: flex !important;
+    align-items: center !important;
+    height: 100% !important;
+    justify-content: space-between !important;
+    
+    .MatcHeaderCenterLeft {
+      display: flex !important;
+      align-items: center !important;
+      height: 100% !important;
+      gap: 32px !important;
+      flex-grow: 1 !important;
+    }
+    
+    .MatcHeaderCenterRight {
+      display: flex !important;
+      align-items: center !important;
+      height: 100% !important;
+      gap: 32px !important;
+    }
+  }
+  
+  .MatcHeaderRight {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    height: 100% !important;
+    padding: 0px 24px !important;
+    gap: 16px !important;
+    width: 256px !important;
+    
+    a {
+      padding: 8px 12px !important;
+      border-radius: 8px !important;
+      transition: all 0.2s ease !important;
+      
+      &:hover {
+        background: rgba(255, 255, 255, 0.1) !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+      }
+    }
+  }
+}
+
+// Language Picker Glassmorphism Theme
+.MatcLanguagePicker {
+  .MatcToolbarIconButton {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 8px !important;
+    padding: 8px 12px !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    transition: all 0.2s ease !important;
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.15) !important;
+      border-color: rgba(255, 255, 255, 0.3) !important;
+      color: #ffffff !important;
+    }
+  }
+  
+  .MatcDropDownPopUp {
+    background: rgba(255, 255, 255, 0.05) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+    overflow: hidden !important;
+    
+    a {
+      color: rgba(255, 255, 255, 0.8) !important;
+      padding: 12px 16px !important;
+      transition: all 0.2s ease !important;
+      
+      &:hover {
+        background: rgba(255, 0, 128, 0.2) !important;
+        color: #ffffff !important;
+      }
+    }
+  }
+  
+  .MatcDropDownPopUpBackdrop {
+    background: rgba(0, 0, 0, 0.3) !important;
+    backdrop-filter: blur(5px) !important;
+    -webkit-backdrop-filter: blur(5px) !important;
+  }
+}
+
+// Global body and html styling to remove white bands - only when my-account page is active
+body.my-account-page, 
+html.my-account-page {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a0b2e 25%, #16213e 50%, #0f3460 75%, #0a0a0a 100%) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+// My Account Page Glassmorphism Theme - Only apply to my-account page
+.VommondContentContainer,
+.MatcContainer:not(.MatcStudio),
+.Matc:not(.MatcStudio) {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a0b2e 25%, #16213e 50%, #0f3460 75%, #0a0a0a 100%) !important;
+  min-height: 100vh !important;
+  color: #ffffff !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  
+  // Force header styling on my-account page only
+  .MatcHeader:not(.MatcStudio .MatcHeader) {
+    background: rgba(255, 255, 255, 0.05) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 0 !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+    margin: 0 !important;
+    padding: 16px 24px !important;
+    color: #ffffff !important;
+    width: 100% !important;
+    max-width: none !important;
+    
+    a {
+      color: rgba(255, 255, 255, 0.9) !important;
+      text-decoration: none !important;
+      transition: all 0.2s ease !important;
+      
+      &:hover {
+        color: #ffffff !important;
+        transform: translateY(-1px) !important;
+      }
+    }
+    
+    .MatcHeaderLogo {
+      filter: brightness(0) invert(1) !important;
+    }
+  }
+}
+
+.MatcContent {
+  background: transparent !important;
+  color: #ffffff !important;
+  min-height: 600px !important;
+  
+  h2 {
+    color: #ffffff !important;
+    font-size: 32px !important;
+    font-weight: 700 !important;
+    margin-bottom: 24px !important;
+    margin-top: 0 !important;
+    text-align: center !important;
+    background: linear-gradient(135deg, #ff0080 0%, #8b5cf6 50%, #00d4ff 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+  }
+}
+
+.MatcSection {
+  background: transparent !important;
+  padding: 0 !important;
+  
+  .container {
+    background: rgba(255, 255, 255, 0.05) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+    padding: 40px !important;
+    margin: 20px auto !important;
+    max-width: 800px !important;
+  }
+}
+
+.MatcLead {
+  color: rgba(255, 255, 255, 0.8) !important;
+  font-size: 18px !important;
+  text-align: center !important;
+  margin-bottom: 32px !important;
+  line-height: 1.6 !important;
+}
+
+// Form Styling
+.form-group {
+  margin-bottom: 24px !important;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+  
+  label {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 600 !important;
+    margin-bottom: 8px !important;
+    display: block !important;
+    font-size: 14px !important;
+  }
+  
+  .form-control {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: #ffffff !important;
+    border-radius: 12px !important;
+    padding: 12px 16px !important;
+    font-size: 16px !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    transition: all 0.3s ease !important;
+    
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.5) !important;
+    }
+    
+    &:hover {
+      border-color: rgba(255, 255, 255, 0.3) !important;
+      background: rgba(255, 255, 255, 0.15) !important;
+    }
+    
+    &:focus {
+      border-color: rgba(255, 0, 128, 0.5) !important;
+      box-shadow: 0 0 0 3px rgba(255, 0, 128, 0.1) !important;
+      outline: none !important;
+      background: rgba(255, 255, 255, 0.15) !important;
+    }
+    
+    &:disabled {
+      background: rgba(255, 255, 255, 0.05) !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+      color: rgba(255, 255, 255, 0.5) !important;
+      cursor: not-allowed !important;
+    }
+  }
+}
+
+.MatcHint {
+  color: rgba(255, 255, 255, 0.6) !important;
+  font-size: 12px !important;
+  font-style: italic !important;
+}
+
+.MatcHoverHint {
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  
+  &:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-radius: 8px !important;
+    padding: 8px !important;
+    margin: -8px !important;
+  }
+}
+
+// Button Styling
+.MatcButtonBar {
+  display: flex !important;
+  gap: 16px !important;
+  justify-content: center !important;
+  margin-top: 32px !important;
+  padding-top: 24px !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.MatcButton {
+  background: linear-gradient(135deg, 
+    rgba(255, 0, 128, 0.15) 0%, 
+    rgba(139, 92, 246, 0.15) 50%,
+    rgba(0, 212, 255, 0.15) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+  backdrop-filter: blur(15px) !important;
+  -webkit-backdrop-filter: blur(15px) !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 4px 16px rgba(255, 0, 128, 0.2) !important;
+  border-radius: 12px !important;
+  padding: 12px 24px !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  display: inline-block !important;
+  cursor: pointer !important;
+
+  &:hover {
+    background: linear-gradient(135deg, 
+      rgba(255, 0, 128, 0.25) 0%, 
+      rgba(139, 92, 246, 0.25) 50%,
+      rgba(0, 212, 255, 0.25) 100%) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 24px rgba(255, 0, 128, 0.3) !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+  }
+}
+
+.MatcLinkButton {
+  color: rgba(255, 255, 255, 0.8) !important;
+  text-decoration: none !important;
+  padding: 12px 24px !important;
+  border-radius: 12px !important;
+  transition: all 0.3s ease !important;
+  border: 1px solid transparent !important;
+  
+  &:hover {
+    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+  }
+}
+
+// Error and Success Messages
+.MatcErrorLabel {
+  color: #ff6b6b !important;
+  background: rgba(255, 107, 107, 0.1) !important;
+  border: 1px solid rgba(255, 107, 107, 0.2) !important;
+  border-radius: 8px !important;
+  padding: 12px 16px !important;
+  margin: 16px 0 !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+}
+
+.MatcDangerBox {
+  background: rgba(255, 107, 107, 0.1) !important;
+  border: 1px solid rgba(255, 107, 107, 0.2) !important;
+  border-radius: 12px !important;
+  padding: 20px !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  margin-top: 32px !important;
+  
+  a {
+    color: #ff6b6b !important;
+    text-decoration: none !important;
+    font-weight: 600 !important;
+    
+    &:hover {
+      color: #ff5252 !important;
+      text-decoration: underline !important;
+    }
+  }
+}
+
+// User Image Section
+.col-md-2 {
+  .Label {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 600 !important;
+    margin-bottom: 16px !important;
+    display: block !important;
+  }
+}
+
+// User Image Uploader Glassmorphism Theme
+.MatcUserImageUploader {
+  .MatcUserImageCntr {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 2px dashed rgba(255, 255, 255, 0.3) !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.3s ease !important;
+    
+    &:hover {
+      border-color: rgba(255, 0, 128, 0.5) !important;
+      background: rgba(255, 255, 255, 0.15) !important;
+    }
+  }
+  
+  .MatcImageUploadAdd {
+    color: rgba(255, 255, 255, 0.6) !important;
+    font-size: 80px !important;
+    transition: all 0.3s ease !important;
+    
+    &:hover {
+      color: rgba(255, 0, 128, 0.8) !important;
+      transform: scale(1.1) !important;
+    }
+  }
+  
+  .MatcHint {
+    color: rgba(255, 255, 255, 0.7) !important;
+    font-size: 14px !important;
+    text-align: center !important;
+    margin-top: 12px !important;
+  }
+  
+  .MatcActionBar {
+    margin-top: 16px !important;
+    text-align: center !important;
+  }
+  
+  .MatcActionBarBtn {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 8px !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    padding: 8px 16px !important;
+    margin: 0 4px !important;
+    text-decoration: none !important;
+    transition: all 0.2s ease !important;
+    display: inline-block !important;
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.15) !important;
+      border-color: rgba(255, 255, 255, 0.3) !important;
+      color: #ffffff !important;
+    }
+  }
+  
+  .MatcUploadButton {
+    background: linear-gradient(135deg, 
+      rgba(255, 0, 128, 0.15) 0%, 
+      rgba(139, 92, 246, 0.15) 50%,
+      rgba(0, 212, 255, 0.15) 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    
+    &:hover {
+      background: linear-gradient(135deg, 
+        rgba(255, 0, 128, 0.25) 0%, 
+        rgba(139, 92, 246, 0.25) 50%,
+        rgba(0, 212, 255, 0.25) 100%) !important;
+      border-color: rgba(255, 255, 255, 0.3) !important;
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .MatcSection .container {
+    margin: 10px !important;
+    padding: 24px !important;
+  }
+  
+  .MatcContent h2 {
+    font-size: 24px !important;
+  }
+  
+  .MatcButtonBar {
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+}

@@ -1,106 +1,189 @@
 <template>
-    <div :class="'MatcLoginPage ' + (resetToken ? 'MatcLoginPageReset' : 'MactMainGradient')">
+    <div class="MatcLoginPage">
+        <!-- Animated background with gradient -->
+        <div class="MatcLoginBackground">
+            <div class="MatcLoginBackgroundGradient"></div>
+            <div class="MatcLoginBackgroundShapes">
+                <div class="MatcLoginShape MatcLoginShape1"></div>
+                <div class="MatcLoginShape MatcLoginShape2"></div>
+                <div class="MatcLoginShape MatcLoginShape3"></div>
+            </div>
+        </div>
+
         <div class="MatcLoginPageDialog" v-if="isQuxAuth">
-        
-                <div class="MatcLoginPageContainer">
-                    <div class="MatcToolbarTabs MatcToolbarTabsBig" v-if="!resetToken">
-                        <a :class="{'MatcToolbarTabActive': tab === 'login'}" @click="setTab('login')">Login</a>
-                        <a :class="{'MatcToolbarTabActive': tab === 'signup'}" @click="setTab('signup')" v-if="allowSignUp">Sign Up</a>
+            <div class="MatcLoginPageContainer">
+                <!-- Logo/Brand -->
+                <div class="MatcLoginHeader">
+                    <div class="MatcLoginLogo">
+                        <div class="MatcLoginLogoIcon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" fill="url(#gradient)"/>
+                                <defs>
+                                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#ff0080"/>
+                                        <stop offset="50%" style="stop-color:#8b5cf6"/>
+                                        <stop offset="100%" style="stop-color:#00d4ff"/>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                        <h1 class="MatcLoginTitle">Quant-UX</h1>
+                        <p class="MatcLoginSubtitle">Prototype, Test and Learn</p>
+                    </div>
+                </div>
+
+                <!-- Tab Navigation -->
+                <div class="MatcLoginTabs" v-if="!resetToken">
+                    <button 
+                        :class="['MatcLoginTab', {'MatcLoginTabActive': tab === 'login'}]" 
+                        @click="setTab('login')"
+                    >
+                        LOGIN
+                    </button>
+                    <button 
+                        :class="['MatcLoginTab', {'MatcLoginTabActive': tab === 'signup'}]" 
+                        @click="setTab('signup')" 
+                        v-if="allowSignUp"
+                    >
+                        SIGN UP
+                    </button>
+                </div>
+
+                <!-- Form Content -->
+                <div class="MatcLoginContent">
+                    <!-- Login Form -->
+                    <div v-if="tab === 'login'" class="MatcLoginForm">
+                        <div class="MatcFormGroup">
+                            <label class="MatcFormLabel">Email</label>
+                            <input 
+                                class="MatcFormInput" 
+                                placeholder="Enter your email" 
+                                type="email" 
+                                v-model="email"
+                            >
+                        </div>
+
+                        <div class="MatcFormGroup">
+                            <label class="MatcFormLabel">Password</label>
+                            <input 
+                                class="MatcFormInput" 
+                                placeholder="Enter your password" 
+                                type="password" 
+                                v-model="password" 
+                                @keyup.enter="login"
+                            >
+                        </div>
+
+                        <button class="MatcLoginButton" @click="login">
+                            <span>LOGIN</span>
+                            <div class="MatcLoginButtonShine"></div>
+                        </button>
+
+                        <button 
+                            class="MatcLoginLink" 
+                            @click="requestPasswordReset" 
+                            v-if="hasLoginError"
+                        >
+                            Forgot Password?
+                        </button>
+
+                        <div class="MatcErrorMessage" v-show="errorMessage">{{errorMessage}}</div>
                     </div>
 
-                    <div :class="' MatcLoginWrapper ' + tab ">
-                        <div class="MatcLoginContent">
-                            <div class="MatcLoginPageSection" >
-                                <div class="MatcLoginPageForm">
-                                    <div class=" form-group">
-                                        <label class="">Email</label>
-                                        <input class=" form-control" placeholder="Your email" type="text" v-model="email">
-                                    </div>
+                    <!-- Signup Form -->
+                    <div v-if="tab === 'signup'" class="MatcLoginForm">
+                        <div class="MatcFormGroup">
+                            <label class="MatcFormLabel">Email</label>
+                            <input 
+                                class="MatcFormInput" 
+                                placeholder="Enter your email" 
+                                type="email" 
+                                v-model="email"
+                            >
+                        </div>
 
-                                    <div class=" form-group has-feedback">
-                                        <label class="">Password</label>
-                                        <input class=" form-control" placeholder="Your password" type="password" v-model="password" @keyup.enter="login">
-                                    </div>
-                                    
-                                </div>
-                          
-                                <div class="MatcButtonBar MatMarginTopXL">
-                                    <a class="MatcButton MatcButtonPrimary" @click="login">Login</a>
-                                    <a class="MatcLinkButton" @click="requestPasswordReset" v-if="hasLoginError">Reset Password</a>
-                                    <span class="MatcErrorLabel" v-show="errorMessage">{{errorMessage}}</span>
-                                </div>
-                            </div>
-                        </div> <!-- login-->
-                        
-                     
+                        <div class="MatcFormGroup">
+                            <label class="MatcFormLabel">Password</label>
+                            <input 
+                                class="MatcFormInput" 
+                                placeholder="Create a password" 
+                                type="password" 
+                                v-model="password" 
+                                @keyup.enter="signup"
+                            >
+                        </div>
 
-                        <div class="MatcLoginContent">
-                            <div class="MatcLoginPageSection">
-                                <div class="MatcLoginPageForm">
-                                    <div class=" form-group">
-                                        <label class="">Email</label>
-                                        <input class=" form-control" placeholder="Your email" type="text" v-model="email">
-                                    </div>
+                        <div class="MatcFormGroup MatcFormGroupCheckbox">
+                            <label class="MatcCheckboxLabel">
+                                <CheckBox v-model="tos" label=""/>
+                                <span class="MatcCheckboxText">
+                                    I accept the <a href="#/tos.html" target="_blank" class="MatcCheckboxLink">terms of service</a>
+                                </span>
+                            </label>
+                        </div>
 
-                                    <div class=" form-group has-feedback">
-                                        <label class="">Password</label>
-                                        <input class=" form-control" placeholder="Your password" type="password" v-model="password" @keyup.enter="signup">
-                                    </div>
-                                    <div class=" form-group has-feedback" >
-                                        <div class="MatcCheckboxRow">
-                                        <CheckBox v-model="tos" label=""/>
-                                        <span @click="tos=true">I accept the <a href="#/tos.html" target="_blank">terms of service</a></span>
-                                        </div>
-                                    </div>
-                                   
-                                </div>
-                                
-                                <div class="MatcButtonBar">
-                                    <a class="MatcButton MatcButtonPrimary" @click="signup">SignUp</a>
-                                    <span class="MatcErrorLabel">{{errorMessage}}</span>
-                                </div>
-                            </div>
-                        </div> <!-- new -->
+                        <button class="MatcLoginButton" @click="signup">
+                            <span>SIGN UP</span>
+                            <div class="MatcLoginButtonShine"></div>
+                        </button>
 
-                        <div class="MatcLoginContent">
-                              <div class="MatcLoginPageSection" v-if="resetToken">
-                                <div class="MatcLoginPageForm">
-                                    <div class=" form-group">
-                                        <label class="">Email</label>
-                                        <input class=" form-control" placeholder="Your email" type="text" v-model="email">
-                                    </div>
+                        <div class="MatcErrorMessage" v-show="errorMessage">{{errorMessage}}</div>
+                    </div>
 
-                                    <div class=" form-group has-feedback">
-                                        <label class="">New Password</label>
-                                        <input class=" form-control" placeholder="The new password" type="password" v-model="password">
-                                    </div>
-                                </div>
-                                <span class="MatcErrorLabel" >{{errorMessage}}</span>
-                                <div class="MatcButtonBar">
-                                    <a class="MatcButton MatcButtonDanger" @click="resetPassword">Set new password</a>                                
-                                </div>
-                            </div> 
-                        </div><!-- reset-->
+                    <!-- Reset Password Form -->
+                    <div v-if="resetToken" class="MatcLoginForm">
+                        <div class="MatcFormGroup">
+                            <label class="MatcFormLabel">Email</label>
+                            <input 
+                                class="MatcFormInput" 
+                                placeholder="Enter your email" 
+                                type="email" 
+                                v-model="email"
+                            >
+                        </div>
 
-    
+                        <div class="MatcFormGroup">
+                            <label class="MatcFormLabel">New Password</label>
+                            <input 
+                                class="MatcFormInput" 
+                                placeholder="Enter new password" 
+                                type="password" 
+                                v-model="password"
+                            >
+                        </div>
 
-                    </div> <!-- end wrapper-->
+                        <button class="MatcLoginButton MatcLoginButtonDanger" @click="resetPassword">
+                            <span>Set New Password</span>
+                            <div class="MatcLoginButtonShine"></div>
+                        </button>
 
-        
-            </div> <!-- Container -->
-            
-          
-        </div> <!-- Dialog -->
-
-       
+                        <div class="MatcErrorMessage" v-show="errorMessage">{{errorMessage}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
 </template>
 
 
 <style lang="scss">
     @import "../style/components/login.scss";
     @import '../style/toolbar/tab.scss';
+    
+    // Force override any existing styles
+    .MatcLoginPage {
+        background: linear-gradient(135deg, #0a0a0a 0%, #1a0b2e 25%, #16213e 50%, #0f3460 75%, #0a0a0a 100%) !important;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    }
+    
+    .MatcLoginPageContainer {
+        background: rgba(255, 255, 255, 0.05) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        border-radius: 24px !important;
+        color: #ffffff !important;
+    }
 </style>
 
 <script>

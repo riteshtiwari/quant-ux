@@ -1,10 +1,10 @@
 <template>
-  <div class="MatcHeader" id="">
+  <div class="MatcHeader" id="" style="background: rgba(255, 255, 255, 0.05) !important; backdrop-filter: blur(20px) !important; -webkit-backdrop-filter: blur(20px) !important; border: 1px solid rgba(255, 255, 255, 0.1) !important; border-radius: 16px !important; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important; color: #ffffff !important;">
  
       <div class="MatcHeaderLeft">
      
-        <a href="#/" ref="myPrototype">
-          <img src="../style/img/QUXLogoBlack.svg" class="MatcHeaderLogo" ref="logo">
+        <a href="#/" ref="myPrototype" style="color: rgba(255, 255, 255, 0.9) !important; text-decoration: none !important;">
+          <img src="../style/img/QUXLogoBlack.svg" class="MatcHeaderLogo" ref="logo" style="filter: brightness(0) invert(1) !important;">
           Quant-UX
         </a>
 
@@ -33,7 +33,7 @@
         <a class="" href="#/logout.html">{{ $t('header.logout') }}</a>
       -->
        
-        <a class="" href="#/logout.html">
+        <a class="" href="#/logout.html" style="color: rgba(255, 255, 255, 0.9) !important; text-decoration: none !important; padding: 8px 12px !important; border-radius: 8px !important; transition: all 0.2s ease !important;">
           <QIcon icon="Logout"/>
         </a>
        
@@ -44,6 +44,7 @@
 
 <style lang="scss">
 @import "../style/components/menu.scss";
+@import "../style/components/studio-glassmorphism.scss";
 </style>
 
 
