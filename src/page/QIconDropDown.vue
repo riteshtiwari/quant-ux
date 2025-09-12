@@ -1,13 +1,13 @@
-
 <template>
     <div :class="['MatcIconDropDown', {'MatcIconDropDownVisible': isVisible}, {'MatcIconDropDownWide' : size == 'L'}]">
+
        <QIcon @click.stop="open" :icon="icon"/>
 
        <div class="MatcDropDownPopUp" role="menu" data-dojo-attach-point="popup" v-if="isVisible">
          <ul class role="menu" data-dojo-attach-point="ul">
            <li v-for="o in options" :key="o.value" @click.stop="select(o, $event)" >
               <a>
-                <QIcon @click.stop="open" :icon="o.icon" v-if="o.icon"/>
+                <QIcon :icon="o.icon" v-if="o.icon"/>
                 {{o.label}}
               </a>
            </li>
@@ -52,10 +52,9 @@
         }
         this.$emit('change', o.value)
         this.close()
-      }
+      },
     },
     async mounted() {
     }
   };
   </script>
-    

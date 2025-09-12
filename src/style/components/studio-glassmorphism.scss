@@ -1466,6 +1466,241 @@ body .ZoomDialogWrapper {
       justify-content: center !important;
     }
   }
+  
+  // Fix Add task button text alignment - only center the text, keep button size
+  .MatcButton.MatcButtonXS {
+    text-align: center !important;
+  }
+  
+  // Fix Screen Recordings action icons - make them inline without button backgrounds
+  .MatcDashTable {
+    .MatcButton.MatcButtonXXS {
+      background: none !important;
+      border: none !important;
+      padding: 4px !important;
+      margin: 0 4px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: auto !important;
+      height: auto !important;
+      min-width: auto !important;
+      
+      &:hover {
+        background: rgba(255, 255, 255, 0.1) !important;
+      }
+    }
+    
+    // Make the action group display inline
+    div[style*="display: inline-block"] {
+      display: flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      width: auto !important;
+    }
+  }
+  
+  // Fix Share Modal - ensure content is visible with glassmorphism theme
+  .MatcInfitationDialog {
+    background: rgba(255, 255, 255, 0.05) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+    color: #ffffff !important;
+    
+    h3 {
+      color: #ffffff !important;
+    }
+    
+    .MatcShareDialog {
+      color: #ffffff !important;
+      
+      label {
+        color: rgba(255, 255, 255, 0.9) !important;
+      }
+      
+      .form-control {
+        background: rgba(255, 255, 255, 0.1) !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        color: #ffffff !important;
+        
+        &::placeholder {
+          color: rgba(255, 255, 255, 0.5) !important;
+        }
+      }
+      
+      .MatcShareIcon {
+        background: rgba(255, 255, 255, 0.1) !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        color: rgba(255, 255, 255, 0.9) !important;
+        
+        &:hover {
+          background: rgba(255, 255, 255, 0.2) !important;
+          color: #ffffff !important;
+        }
+      }
+      
+      .VommondCheckBoxWrapper {
+        color: rgba(255, 255, 255, 0.9) !important;
+      }
+    }
+    
+    .MatcButton {
+      background: linear-gradient(135deg, 
+        rgba(255, 0, 128, 0.2) 0%, 
+        rgba(139, 92, 246, 0.2) 50%,
+        rgba(0, 212, 255, 0.2) 100%) !important;
+      border: 1px solid rgba(255, 255, 255, 0.2) !important;
+      color: #ffffff !important;
+      
+      &:hover {
+        background: linear-gradient(135deg, 
+          rgba(255, 0, 128, 0.3) 0%, 
+          rgba(139, 92, 246, 0.3) 50%,
+          rgba(0, 212, 255, 0.3) 100%) !important;
+      }
+    }
+  }
+  
+  // Fix Share Modal - ensure content is visible with glassmorphism theme
+  .MatcInfitationDialog {
+    background: rgba(255, 255, 255, 0.05) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+    color: #ffffff !important;
+    
+    h3 {
+      color: #ffffff !important;
+    }
+    
+    .MatcShareDialog {
+      color: #ffffff !important;
+      
+      label {
+        color: rgba(255, 255, 255, 0.9) !important;
+      }
+      
+      .form-control {
+        background: rgba(255, 255, 255, 0.1) !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        color: #ffffff !important;
+        
+        &::placeholder {
+          color: rgba(255, 255, 255, 0.5) !important;
+        }
+      }
+      
+      .MatcShareIcon {
+        background: rgba(255, 255, 255, 0.1) !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        color: rgba(255, 255, 255, 0.9) !important;
+        
+        &:hover {
+          background: rgba(255, 255, 255, 0.2) !important;
+          color: #ffffff !important;
+        }
+      }
+      
+      .VommondCheckBoxWrapper {
+        color: rgba(255, 255, 255, 0.9) !important;
+      }
+    }
+    
+    .MatcButton {
+      background: linear-gradient(135deg, 
+        rgba(255, 0, 128, 0.2) 0%, 
+        rgba(139, 92, 246, 0.2) 50%,
+        rgba(0, 212, 255, 0.2) 100%) !important;
+      border: 1px solid rgba(255, 255, 255, 0.2) !important;
+      color: #ffffff !important;
+      
+      &:hover {
+        background: linear-gradient(135deg, 
+          rgba(255, 0, 128, 0.3) 0%, 
+          rgba(139, 92, 246, 0.3) 50%,
+          rgba(0, 212, 255, 0.3) 100%) !important;
+      }
+    }
+  }
+}
+
+// Fix Dialog class modals (used by share modal) - Glassmorphism Theme
+.VommondDialogBackground {
+  background: rgba(0, 0, 0, 0.7) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+}
+
+.VommondDialogWrapper {
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+  color: #ffffff !important;
+}
+
+.VommondDialogContent {
+  color: #ffffff !important;
+  
+  h3 {
+    color: #ffffff !important;
+  }
+  
+  .MatcShareDialog {
+    color: #ffffff !important;
+    
+    label {
+      color: rgba(255, 255, 255, 0.9) !important;
+    }
+    
+    .form-control {
+      background: rgba(255, 255, 255, 0.1) !important;
+      border: 1px solid rgba(255, 255, 255, 0.2) !important;
+      color: #ffffff !important;
+      
+      &::placeholder {
+        color: rgba(255, 255, 255, 0.5) !important;
+      }
+    }
+    
+    .MatcShareIcon {
+      background: rgba(255, 255, 255, 0.1) !important;
+      border: 1px solid rgba(255, 255, 255, 0.2) !important;
+      color: rgba(255, 255, 255, 0.9) !important;
+      
+      &:hover {
+        background: rgba(255, 255, 255, 0.2) !important;
+        color: #ffffff !important;
+      }
+    }
+    
+    .VommondCheckBoxWrapper {
+      color: rgba(255, 255, 255, 0.9) !important;
+    }
+  }
+  
+  .MatcButton {
+    background: linear-gradient(135deg, 
+      rgba(255, 0, 128, 0.2) 0%, 
+      rgba(139, 92, 246, 0.2) 50%,
+      rgba(0, 212, 255, 0.2) 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: #ffffff !important;
+    
+    &:hover {
+      background: linear-gradient(135deg, 
+        rgba(255, 0, 128, 0.3) 0%, 
+        rgba(139, 92, 246, 0.3) 50%,
+        rgba(0, 212, 255, 0.3) 100%) !important;
+    }
+  }
 }
 
 // Header Glassmorphism Theme - More Specific Selectors to Override menu.scss
@@ -1594,15 +1829,31 @@ body .MatcHeader,
     border-radius: 12px !important;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
     overflow: hidden !important;
+    z-index: 9999999 !important;
+    position: absolute !important;
     
     a {
       color: rgba(255, 255, 255, 0.8) !important;
       padding: 12px 16px !important;
       transition: all 0.2s ease !important;
+      cursor: pointer !important;
+      pointer-events: auto !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 8px !important;
       
       &:hover {
         background: rgba(255, 0, 128, 0.2) !important;
         color: #ffffff !important;
+      }
+    }
+    
+    li {
+      cursor: pointer !important;
+      pointer-events: auto !important;
+      
+      &:hover {
+        background: rgba(255, 0, 128, 0.2) !important;
       }
     }
   }
@@ -1611,6 +1862,287 @@ body .MatcHeader,
     background: rgba(0, 0, 0, 0.3) !important;
     backdrop-filter: blur(5px) !important;
     -webkit-backdrop-filter: blur(5px) !important;
+    z-index: 9999998 !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+  }
+  
+  // Specific styles for QIconDropDown component
+  .MatcIconDropDown {
+    position: relative !important;
+    z-index: 1000 !important;
+    
+    .MatcDropDownPopUp {
+      z-index: 9999999 !important;
+      position: absolute !important;
+      top: calc(100% + 8px) !important;
+      right: 0 !important;
+      left: auto !important;
+      width: 160px !important;
+      min-width: 160px !important;
+      background: rgba(255, 255, 255, 0.05) !important;
+      backdrop-filter: blur(20px) !important;
+      -webkit-backdrop-filter: blur(20px) !important;
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+      border-radius: 12px !important;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+      overflow: hidden !important;
+      
+      ul {
+        margin: 0 !important;
+        padding: 0 !important;
+        list-style: none !important;
+      }
+      
+      a {
+        color: rgba(255, 255, 255, 0.9) !important;
+        padding: 12px 16px !important;
+        cursor: pointer !important;
+        pointer-events: auto !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        text-decoration: none !important;
+        transition: all 0.2s ease !important;
+        
+        &:hover {
+          background: rgba(255, 0, 128, 0.2) !important;
+          color: #ffffff !important;
+        }
+      }
+      
+      li {
+        cursor: pointer !important;
+        pointer-events: auto !important;
+        list-style: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        
+        &:hover {
+          background: rgba(255, 0, 128, 0.2) !important;
+        }
+      }
+    }
+    
+    &.MatcIconDropDownWide .MatcDropDownPopUp {
+      width: 200px !important;
+      min-width: 200px !important;
+    }
+  }
+  
+  // Global dropdown styles to ensure they work everywhere - with higher specificity
+  .MatcStudio .MatcDropDownPopUp,
+  .MatcIconDropDown .MatcDropDownPopUp,
+  .MatcDropDownPopUp {
+    display: none !important;
+    z-index: 9999999 !important;
+    position: absolute !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    text-align: left !important;
+    
+    ul {
+      margin: 0 !important;
+      padding: 0 !important;
+      list-style: none !important;
+    }
+    
+    a {
+      color: rgba(255, 255, 255, 0.9) !important;
+      padding: 12px 16px !important;
+      cursor: pointer !important;
+      pointer-events: auto !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      text-decoration: none !important;
+      transition: all 0.2s ease !important;
+      
+      &:hover {
+        background: rgba(255, 0, 128, 0.2) !important;
+        color: #ffffff !important;
+      }
+    }
+    
+    li {
+      cursor: pointer !important;
+      pointer-events: auto !important;
+      list-style: none !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      
+      &:hover {
+        background: rgba(255, 0, 128, 0.2) !important;
+      }
+    }
+  }
+  
+  // Show dropdown when MatcIconDropDownVisible class is present
+  .MatcIconDropDownVisible .MatcDropDownPopUp {
+    display: block !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+    color: #ffffff !important;
+    
+    a {
+      color: rgba(255, 255, 255, 0.9) !important;
+      padding: 12px 16px !important;
+      cursor: pointer !important;
+      pointer-events: auto !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      text-decoration: none !important;
+      transition: all 0.2s ease !important;
+      
+      &:hover {
+        background: rgba(255, 0, 128, 0.2) !important;
+        color: #ffffff !important;
+      }
+    }
+    
+    li {
+      cursor: pointer !important;
+      pointer-events: auto !important;
+      list-style: none !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      
+      &:hover {
+        background: rgba(255, 0, 128, 0.2) !important;
+      }
+    }
+  }
+  
+  // Override form.scss styles specifically
+  .MatcStudio .MatcDropDownButtonOpen .MatcDropDownPopUp,
+  .MatcStudio .MatcDropDownButtonOpen.MatcDropDownPopUp,
+  .MatcIconDropDown .MatcDropDownButtonOpen .MatcDropDownPopUp,
+  .MatcIconDropDown .MatcDropDownButtonOpen.MatcDropDownPopUp {
+    display: block !important;
+  }
+  
+  // Maximum specificity overrides for dropdown theming
+  body .MatcStudio .MatcIconDropDown,
+  body .MatcIconDropDown {
+    z-index: 999999 !important;
+  }
+  
+  // Ensure text areas don't interfere with dropdowns
+  body .MatcStudio .MatcAutoTextArea,
+  body .MatcAutoTextArea {
+    z-index: 1 !important;
+  }
+  
+  body .MatcStudio .MatcIconDropDown .MatcDropDownPopUp,
+  body .MatcStudio .MatcIconDropDownVisible .MatcDropDownPopUp,
+  body .MatcIconDropDown .MatcDropDownPopUp,
+  body .MatcIconDropDownVisible .MatcDropDownPopUp {
+    background: rgba(255, 255, 255, 0.05) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+    color: #ffffff !important;
+    z-index: 999999 !important;
+    position: absolute !important;
+    
+    a {
+      color: rgba(255, 255, 255, 0.9) !important;
+      padding: 12px 16px !important;
+      cursor: pointer !important;
+      pointer-events: auto !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      text-decoration: none !important;
+      transition: all 0.2s ease !important;
+      
+      &:hover {
+        background: rgba(255, 0, 128, 0.2) !important;
+        color: #ffffff !important;
+      }
+    }
+    
+    li {
+      cursor: pointer !important;
+      pointer-events: auto !important;
+      list-style: none !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      
+      &:hover {
+        background: rgba(255, 0, 128, 0.2) !important;
+      }
+    }
+  }
+  
+  // Override icon_drop_down.scss styles specifically
+  body .MatcStudio .MatcIconDropDown .MatcDropDownPopUp a,
+  body .MatcStudio .MatcIconDropDownVisible .MatcDropDownPopUp a,
+  body .MatcIconDropDown .MatcDropDownPopUp a,
+  body .MatcIconDropDownVisible .MatcDropDownPopUp a {
+    color: rgba(255, 255, 255, 0.9) !important;
+    padding: 12px 16px !important;
+    
+    &:hover {
+      background: rgba(255, 0, 128, 0.2) !important;
+      color: #ffffff !important;
+    }
+  }
+  
+  // Custom glassmorphism class with maximum specificity
+  .MatcDropDownPopUpGlassmorphism {
+    background: rgba(255, 255, 255, 0.05) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+    color: #ffffff !important;
+    
+    a {
+      color: rgba(255, 255, 255, 0.9) !important;
+      padding: 12px 16px !important;
+      cursor: pointer !important;
+      pointer-events: auto !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      text-decoration: none !important;
+      transition: all 0.2s ease !important;
+      
+      &:hover {
+        background: rgba(255, 0, 128, 0.2) !important;
+        color: #ffffff !important;
+      }
+    }
+    
+    li {
+      cursor: pointer !important;
+      pointer-events: auto !important;
+      list-style: none !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      
+      &:hover {
+        background: rgba(255, 0, 128, 0.2) !important;
+      }
+    }
   }
 }
 

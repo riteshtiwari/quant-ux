@@ -3,6 +3,7 @@
 .MatcIconDropDown{
   display: inline-block;
   position: relative;
+  z-index: 999999;
 
 
   a {
@@ -20,23 +21,40 @@
     width: 160px;
     overflow: hidden;
     top: calc(100% + 8px);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    z-index: 999999;
 
     a {
       padding: 4px 8px;
       display: flex;
-      color: #363636;
+      color: rgba(255, 255, 255, 0.9);
       cursor: pointer;
       align-items: center;
       gap: 4px;
       &:hover{
         color: #fff;
-        background: $primary_color;
+        background: rgba(255, 255, 255, 0.1);
       }
     }
   }
 
   
 
+}
+
+.MatcDropDownPopUpBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999998;
+  pointer-events: auto !important;
 }
 
 .MatcIconDropDownWide .MatcDropDownPopUp {
